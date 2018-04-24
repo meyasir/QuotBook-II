@@ -1,11 +1,14 @@
 package com.sky.quotebook.activities;
 
 import android.app.ActivityOptions;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -214,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "save", Toast.LENGTH_SHORT).show();
             }
             case R.id.action_share: {
+                onShareClick(bottomNavigation);
                 Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT).show();
                 break;
             }
@@ -222,4 +226,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void onShareClick(View v) {
+        List<Intent> targetShareIntents = new ArrayList<Intent>();
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        List<ResolveInfo> resInfos = getPackageManager().queryIntentActivities(shareIntent, 0);
+        if (!resInfos.isEmpty()) {
+            System.out.println("Have package");
+            for (ResolveInfo resInfo : resInfos) {
+                String packageName = resInfo.activityInfo.packageName;
+                Log.i("Package Name", packageName);
+                if (packageName.contains("com.twitter.android") || packageName.contains("com.facebook.katana") || packageName.contains("com.whatsapp")) {
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName(packageName, resInfo.activityInfo.name));
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Text");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                    intent.setPackage(packageName);
+                    targetShareIntents.add(intent);
+                }
+            }
+            if (!targetShareIntents.isEmpty()) {
+                System.out.println("Have Intent");
+                Intent chooserIntent = Intent.createChooser(targetShareIntents.remove(0), "Choose app to share");
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetShareIntents.toArray(new Parcelable[]{}));
+                startActivity(chooserIntent);
+            } else {
+                System.out.println("Do not Have Intent");
+                //showDialaog(this);
+                Toast.makeText(getApplicationContext(), "Don't share", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
