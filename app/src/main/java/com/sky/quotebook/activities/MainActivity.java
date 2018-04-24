@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sky.quotebook.fragments.GeneralDialogFragment;
 import com.sky.quotebook.fragments.NoteFragment;
 import com.sky.quotebook.R;
 import com.sky.quotebook.adapter.RecyclerViewAdapter;
@@ -52,7 +53,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GeneralDialogFragment.OnDialogFragmentClickListener{
 
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter adapter;
@@ -217,8 +218,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "save", Toast.LENGTH_SHORT).show();
             }
             case R.id.action_share: {
-                onShareClick(bottomNavigation);
-                Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT).show();
+               // onShareClick(bottomNavigation);
+                GeneralDialogFragment generalDialogFragment =
+                        GeneralDialogFragment.newInstance("Really!! \n you've someone to share this? \n", "Here are two options");
+                generalDialogFragment.show(getSupportFragmentManager(),"dialog");
+              //  Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
@@ -259,5 +263,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Don't share", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public void onOkClicked(GeneralDialogFragment dialog) {
+        onShareClick(bottomNavigation);
+        Toast.makeText(getApplicationContext(), "this is on click Dialog fragment", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelClicked(GeneralDialogFragment dialog) {
+        Toast.makeText(getApplicationContext(), "cancelled Dialog fragment", Toast.LENGTH_SHORT).show();
+
     }
 }
