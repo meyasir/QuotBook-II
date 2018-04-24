@@ -1,10 +1,14 @@
 package com.sky.quotebook.activities;
 
+import android.app.ActivityOptions;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -21,6 +25,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -33,6 +38,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sky.quotebook.fragments.GeneralDialogFragment;
 import com.sky.quotebook.fragments.NoteFragment;
 import com.sky.quotebook.R;
 import com.sky.quotebook.adapter.RecyclerViewAdapter;
@@ -47,7 +53,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements GeneralDialogFragment.OnDialogFragmentClickListener{
 
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter adapter;
@@ -63,8 +69,6 @@ public class MainActivity extends AppCompatActivity  {
     FragmentManager fragmentManager;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +79,9 @@ public class MainActivity extends AppCompatActivity  {
 
 
         getSupportActionBar().setTitle("main activity");
-       //display back button
+        //display back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setGravity(toolbar.TEXT_ALIGNMENT_GRAVITY);
 
         initData();
         initView();
@@ -100,6 +105,11 @@ public class MainActivity extends AppCompatActivity  {
                         break;
                 }
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.fragment_slide_left_enter,
+                        R.anim.fragment_slide_left_exit,
+                        R.anim.fragment_slide_right_enter,
+                        R.anim.fragment_slide_right_exit);
+
                 transaction.replace(R.id.main_container, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -193,12 +203,14 @@ public class MainActivity extends AppCompatActivity  {
         switch (item.getItemId()) {
             case R.id.action_settings: {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
+
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
             }
             case R.id.action_about: {
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(intent);
+                //animation applied
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
             }
 
@@ -206,7 +218,11 @@ public class MainActivity extends AppCompatActivity  {
                 Toast.makeText(getApplicationContext(), "save", Toast.LENGTH_SHORT).show();
             }
             case R.id.action_share: {
-                Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT).show();
+               // onShareClick(bottomNavigation);
+                GeneralDialogFragment generalDialogFragment =
+                        GeneralDialogFragment.newInstance("Really!! \n you've someone to share this? \n", "Here are two options");
+                generalDialogFragment.show(getSupportFragmentManager(),"dialog");
+              //  Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
@@ -214,4 +230,50 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
+    public void onShareClick(View v) {
+        List<Intent> targetShareIntents = new ArrayList<Intent>();
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        List<ResolveInfo> resInfos = getPackageManager().queryIntentActivities(shareIntent, 0);
+        if (!resInfos.isEmpty()) {
+            System.out.println("Have package");
+            for (ResolveInfo resInfo : resInfos) {
+                String packageName = resInfo.activityInfo.packageName;
+                Log.i("Package Name", packageName);
+                if (packageName.contains("com.twitter.android") || packageName.contains("com.facebook.katana") || packageName.contains("com.whatsapp")) {
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName(packageName, resInfo.activityInfo.name));
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Text");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                    intent.setPackage(packageName);
+                    targetShareIntents.add(intent);
+                }
+            }
+            if (!targetShareIntents.isEmpty()) {
+                System.out.println("Have Intent");
+                Intent chooserIntent = Intent.createChooser(targetShareIntents.remove(0), "Choose app to share");
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetShareIntents.toArray(new Parcelable[]{}));
+                startActivity(chooserIntent);
+            } else {
+                System.out.println("Do not Have Intent");
+                //showDialaog(this);
+                Toast.makeText(getApplicationContext(), "Don't share", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onOkClicked(GeneralDialogFragment dialog) {
+        onShareClick(bottomNavigation);
+        Toast.makeText(getApplicationContext(), "this is on click Dialog fragment", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelClicked(GeneralDialogFragment dialog) {
+        Toast.makeText(getApplicationContext(), "cancelled Dialog fragment", Toast.LENGTH_SHORT).show();
+
+    }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/card_view_item_recycler_view_author_list"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="67dp"
     android:layout_marginBottom="@dimen/card_margin_vertical_big_activity"
     android:layout_marginEnd="@dimen/card_margin_horizontal_big_activity"
     android:layout_marginLeft="@dimen/card_margin_horizontal_big_activity"
@@ -17,44 +17,30 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_layout_author"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imgView"
+            android:id="@+id/img_view_author_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/img_view_fragment"
-            android:layout_marginLeft="6dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/image_view_margin_left_6dp"
             android:layout_marginRight="22dp"
-            android:src="@drawable/ic_person_red_24dp">
-        </ImageView>
+            android:transitionName="@string/logoTransitionName"></ImageView>
 
         <TextView
             android:id="@+id/text_author_bio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="sans-serif"
             android:text="@string/bio_of_author"
             android:textColor="@color/text_color_item_view"
             android:textSize="18sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="normal"/>
+            android:textStyle="normal" />
     </LinearLayout>
-
-   <!-- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-    <TextView
-        android:id="@+id/tv_recycler_item_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin_very_small"
-        android:text="@string/details_of_author"
-        android:textSize="18sp" />
-    </LinearLayout>-->
-
-</android.support.v7.widget.CardView>
+</LinearLayout>

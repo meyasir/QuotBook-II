@@ -65,5 +65,14 @@
     <string name="author">author</string>
     <string name="share_with">share with</string>
     <string name="author_name">author name</string>
+    <string name="logoTransitionName">Tansitional image view</string>
 
+    <!--List dialog Strings-->
+    <string name="share_email_native">share Email native</string>
+    <string name="share_email_subject">share Email Subject</string>
+    <string name="share_chooser_text">share with</string>
+    <string name="share_twitter">shared on twitter</string>
+    <string name="share_facebook">shared on facebook</string>
+    <string name="share_email_gmail">Gmail</string>
+    <string name="share_sms">share_sms</string>
 </resources>

@@ -27,5 +27,5 @@
     <!-- Google Apps Color -->
 
     <color name="color_main_background">#eee</color>
-    <color name="text_color_item_view">#1e1e1e</color>
+    <color name="text_color_item_view">#4e4d4d</color>
 </resources>

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sky.quotebook.R;
@@ -31,6 +32,7 @@ public class CustomCategoryListAdapter extends RecyclerView.Adapter<CustomCatego
 
         String Filled = data[position];
         holder.textView.setText(Filled);
+      //  holder.catImageView.setImageResource(R.drawable.ic_person_red_24dp);
     }
 
     @Override
@@ -41,9 +43,11 @@ public class CustomCategoryListAdapter extends RecyclerView.Adapter<CustomCatego
     public class CustomViewHolderCat extends RecyclerView.ViewHolder{
 
         TextView textView;
+       // ImageView catImageView;
         public CustomViewHolderCat(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.txt_cat_list);
+           // catImageView = itemView.findViewById(R.id.img_view_category_list);
         }
     }
 }
