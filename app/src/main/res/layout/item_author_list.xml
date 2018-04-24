@@ -28,7 +28,8 @@
             android:layout_above="@+id/img_view_fragment"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="22dp"
-            android:src="@drawable/ic_person_red_24dp">
+            android:src="@drawable/ic_person_red_24dp"
+            android:transitionName="@string/logoTransitionName">
         </ImageView>
 
         <TextView
