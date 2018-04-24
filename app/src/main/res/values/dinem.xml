@@ -32,6 +32,7 @@
     <dimen name="zero_horizontal_margin_big_activity">0dp</dimen>
 
     <dimen name="share_view_round_margin">16dp</dimen>
-    <dimen name="image_view_margin_left_30dp">30dp</dimen>
+    <dimen name="image_view_margin_left_20dp">20dp</dimen>
+    <dimen name="image_view_margin_left_6dp">6dp</dimen>
 
 </resources>

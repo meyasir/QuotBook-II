@@ -20,11 +20,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> //this is the status bar color
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>    //this is the status bar color
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_black_24dp</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item> //only api level > 21
-        <item name="colorControlNormal">#fff</item> //menu three(3) dots color changed
+        <item name="colorControlNormal">#fff</item>                   //menu three(3) dots color changed
+        <item name="android:windowActivityTransitions">true</item>   //Transitions
     </style>
 
     <style name="BaseAppTheme" parent="android:Theme.Material">

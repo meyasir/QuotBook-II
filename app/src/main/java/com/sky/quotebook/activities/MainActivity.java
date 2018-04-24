@@ -1,5 +1,6 @@
 package com.sky.quotebook.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -21,6 +22,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -47,7 +49,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter adapter;
@@ -63,8 +65,6 @@ public class MainActivity extends AppCompatActivity  {
     FragmentManager fragmentManager;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +75,9 @@ public class MainActivity extends AppCompatActivity  {
 
 
         getSupportActionBar().setTitle("main activity");
-       //display back button
+        //display back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setGravity(toolbar.TEXT_ALIGNMENT_GRAVITY);
 
         initData();
         initView();
@@ -100,6 +101,11 @@ public class MainActivity extends AppCompatActivity  {
                         break;
                 }
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.fragment_slide_left_enter,
+                        R.anim.fragment_slide_left_exit,
+                        R.anim.fragment_slide_right_enter,
+                        R.anim.fragment_slide_right_exit);
+
                 transaction.replace(R.id.main_container, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -193,12 +199,14 @@ public class MainActivity extends AppCompatActivity  {
         switch (item.getItemId()) {
             case R.id.action_settings: {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
+
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
             }
             case R.id.action_about: {
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(intent);
+                //animation applied
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
             }
 

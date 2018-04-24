@@ -1,7 +1,9 @@
 package com.sky.quotebook.activities;
 
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -12,6 +14,9 @@ import android.os.Bundle;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -28,12 +33,17 @@ import com.sky.quotebook.R;
 import com.sky.quotebook.model.Constant;
 import com.sky.quotebook.util.AppUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        //getWindow().setAllowEnterTransitionOverlap(false);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
@@ -47,6 +57,43 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         initView();
     }
 
+
+    public void onShareClick(View v) {
+        List<Intent> targetShareIntents = new ArrayList<Intent>();
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        List<ResolveInfo> resInfos = getPackageManager().queryIntentActivities(shareIntent, 0);
+        if (!resInfos.isEmpty()) {
+            System.out.println("Have package");
+            for (ResolveInfo resInfo : resInfos) {
+                String packageName = resInfo.activityInfo.packageName;
+                Log.i("Package Name", packageName);
+                if (packageName.contains("com.twitter.android") || packageName.contains("com.facebook.katana") || packageName.contains("com.kakao.story")) {
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName(packageName, resInfo.activityInfo.name));
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Text");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                    intent.setPackage(packageName);
+                    targetShareIntents.add(intent);
+                }
+            }
+            if (!targetShareIntents.isEmpty()) {
+                System.out.println("Have Intent");
+                Intent chooserIntent = Intent.createChooser(targetShareIntents.remove(0), "Choose app to share");
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetShareIntents.toArray(new Parcelable[]{}));
+                startActivity(chooserIntent);
+            } else {
+                System.out.println("Do not Have Intent");
+                //showDialaog(this);
+                Toast.makeText(getApplicationContext(), "Don't share", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+}
     public void initView() {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_about_card_show);
         ScrollView scroll_about = findViewById(R.id.scroll_about);

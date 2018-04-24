@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="52dp"
     xmlns:app="http://schemas.android.com/tools"
     android:background="?attr/colorPrimary"
-    app:ignore="NamespaceTypo">
+    app:ignore="NamespaceTypo"
+    android:gravity="center_vertical">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:iosched="http://schemas.android.com/apk/res-auto"
@@ -14,5 +15,7 @@
         android:background="?attr/colorPrimary"
         iosched:titleTextColor="@color/white"
         android:minHeight="?attr/actionBarSize"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         app:popupTheme="@style/Theme.AppCompat.NoActionBar"/>
 </android.support.design.widget.AppBarLayout>
