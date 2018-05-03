@@ -3,7 +3,7 @@ package com.sky.quotebook.model;
 import android.content.Context;
 
 /**
- * Created by Yasir on 17-Apr-18.
+ * created for the purpose to RecyclerViewItemClickListener, Not used in this code
  */
 
 public class Author {

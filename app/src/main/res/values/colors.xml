@@ -28,4 +28,19 @@
 
     <color name="color_main_background">#eee</color>
     <color name="text_color_item_view">#4e4d4d</color>
+
+    <!--  Some colors for Notifications in settings, listed under -->
+
+    <color name="textColorHeader">#069ECF</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#A5A5A5</color>
+
+    <!--switch color-->
+
+    <color name="thumb_active">#069ECF</color>
+    <color name="track_active">#66069ECF</color>
+
+    <color name="thumb_inactive">#A5A5A5</color>
+    <color name="track_inactive">#66A5A5A5</color>
+
 </resources>

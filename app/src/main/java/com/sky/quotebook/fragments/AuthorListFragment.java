@@ -48,9 +48,8 @@ public class AuthorListFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rec_fragment_try_test_list);
 
+        //animation applied
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
 
         linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -58,10 +57,11 @@ public class AuthorListFragment extends Fragment {
         fragmentTestAdapter = new CustomAuthorListAdapter(data);
         mRecyclerView.setAdapter(fragmentTestAdapter);
 
+
+        //To show Bottom Navigation view
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-
         return view;
 
     }

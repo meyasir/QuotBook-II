@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Yasir on 17-Apr-18.
+ * created for the purpose to RecyclerViewItemClickListener, Not used in this app up-till now
  */
 
 public class AuthorManager extends Application {

@@ -64,10 +64,11 @@ public class CategoryListFragment extends
 
         getActivity().setTitle("Team B");
 
+        //To show Bottom Navigation view
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-        return  view;
+        return view;
     }
 
 }
