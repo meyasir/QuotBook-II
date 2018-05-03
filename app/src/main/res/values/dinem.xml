@@ -35,4 +35,15 @@
     <dimen name="image_view_margin_left_20dp">20dp</dimen>
     <dimen name="image_view_margin_left_6dp">6dp</dimen>
 
+    <!--added new sizes for notifications in settings, listed under-->
+
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="medium_text">14sp</dimen>
+    <dimen name="large_text">16sp</dimen>
+
+    <dimen name="items_inbetween_space">8dp</dimen>
+    <dimen name="items_top_padding">4dp</dimen>
+
+    <dimen name="timer_icon">25dp</dimen>
+
 </resources>
