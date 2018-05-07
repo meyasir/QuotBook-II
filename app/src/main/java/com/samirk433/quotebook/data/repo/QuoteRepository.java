@@ -6,13 +6,14 @@ import com.samirk433.quotebook.data.model.AuthorModel;
 import com.samirk433.quotebook.data.model.CategoryModel;
 import com.samirk433.quotebook.data.model.QuoteModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Samir Khan on 4/17/2018.
  */
 
-public class QuoteRepository {
+public class QuoteRepository implements Serializable {
     public static final String TAG = QuoteRepository.class.getSimpleName();
 
     private AuthorModel mAuthorModel;

@@ -2,11 +2,13 @@ package com.samirk433.quotebook.data.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * Created by Samir Khan on 4/15/2018.
  */
 
-public class AuthorModel {
+public class AuthorModel implements Serializable {
     private static final String TAG = AuthorModel.class.getSimpleName();
 
     private int mId;

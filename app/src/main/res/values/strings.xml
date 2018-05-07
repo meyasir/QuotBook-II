@@ -1,3 +1,80 @@
 <resources>
-    <string name="app_name">QuoteBook</string>
+    <string name="app_name">Quote Book</string>
+
+    <string name="unsplash_base_url">"https://api.unsplash.com/"</string>
+    <string name="unsplash_access_key">"25c5c6e8002e77d1194c17cbbe22ee68578133bbc4b9ada6a9e7f346d05ed654"</string>
+    <!--&lt;!&ndash;    TYPEFACE NAMES  &ndash;&gt;
+    <string name="font_anton">"Anton/Anton-Regular.ttf"</string>
+    <string name="font_archivo">"Archivo_Black/ArchivoBlack-Regular.ttf"</string>
+    <string name="font_courgette">"Courgette/Courgette-Regular.ttf"</string>
+    <string name="font_dancing_script">"Dancing_Script/DancingScript-Bold.ttf"</string>
+    <string name="font_faster_one">"Faster_One/FasterOne-Regular.ttf"</string>
+    <string name="font_krona_one">"Krona_One/KronaOne-Regular.ttf"</string>
+    <string name="font_merriweather">"Merriweather/Merriweather-BoldItalic.ttf"</string>
+    <string name="font_nosifer">"Nosifer/Nosifer-Regular.ttf"</string>
+    <string name="font_source_sans_pro">"Source_Sans_Pro/SourceSansPro-Regular.ttf"</string>
+    <string name="font_source_sans_pro_light">"Source_Sans_Pro/SourceSansPro-Light.ttf"</string>
+
+-->
+    <!--    TEXT SIZES AND TITLES   -->
+
+
+    <string name="msg_author">"%s"</string>
+    <string name="msg_photographer">"Photo taken by @%s on Unsplash.com"</string>
+
+
+    <array name="arr_text_sizes">
+        <item>16</item>
+        <item>20</item>
+        <item>22</item>
+        <item>26</item>
+        <item>30</item>
+        <item>34</item>
+    </array>
+
+    <array name="arr_text_size_titles">
+        <item>Auto</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>X Large</item>
+        <item>XX Large</item>
+    </array>
+
+
+    <!--    THEME CODES AND TITLES   -->
+    <array name="arr_themes_codes">
+        <item>"#eeeeee"</item>
+        <item>"#444444"</item>
+        <item>"#FFAB00"</item>
+        <item>"#1B5E20"</item>
+        <item>"#0D47A1"</item>
+        <item>"#7B1FA2"</item>
+        <item>"#E53935"</item>
+    </array>
+
+    <array name="arr_text_colors_codes">
+        <item>"#111111"</item>
+        <item>"#ffffff"</item>
+        <item>"#FF6F00"</item>
+        <item>"#4CAF50"</item>
+        <item>"#2196F3"</item>
+        <item>"#6A1B9A"</item>
+        <item>"#D32F2F"</item>
+    </array>
+
+    <array name="arr_themes_titles">
+        <item>Default</item>
+        <item>Anti</item>
+        <item>Amber</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>Red</item>
+    </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
