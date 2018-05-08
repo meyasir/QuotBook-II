@@ -3,11 +3,11 @@
     aa2200
     BF2B06
 
-    <color name="colorPrimary">#BF2B06</color>
+    <color name="colorPrimary">#bf2b06</color>
     <color name="colorPrimaryDark">#8c1b00</color>
     <color name="colorAccent">#010578</color>
 
-    <color name="colorPrimaryLight">#e7de3210</color>
+    <color name="colorPrimaryLight">#e7f26145</color>
 
 
     <color name="white">#FFFFFF</color>
@@ -31,16 +31,16 @@
 
     <!--  Some colors for Notifications in settings, listed under -->
 
-    <color name="textColorHeader">#069ECF</color>
+    <color name="textColorHeader">#1d057e</color>
     <color name="textColorPrimary">#000000</color>
-    <color name="textColorSecondary">#A5A5A5</color>
+    <color name="textColorSecondary">#ef5757</color>
 
     <!--switch color-->
 
-    <color name="thumb_active">#069ECF</color>
-    <color name="track_active">#66069ECF</color>
+    <color name="thumb_active">#fa7d7d</color>
+    <color name="track_active">#ede9b4b4</color>
 
-    <color name="thumb_inactive">#A5A5A5</color>
-    <color name="track_inactive">#66A5A5A5</color>
+    <color name="thumb_inactive">#f2f0f0</color>
+    <color name="track_inactive">#ccaeaaaa</color>
 
 </resources>

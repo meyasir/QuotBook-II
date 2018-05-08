@@ -1,26 +1,36 @@
 package com.sky.quotebook.activities;
 
-import android.app.Service;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import com.sky.quotebook.R;
 import com.sky.quotebook.model.LocalData;
 import com.sky.quotebook.model.NotificationScheduler;
 import com.sky.quotebook.receivers.AlarmReceiver;
+import com.sky.quotebook.util.AppUtils;
 
 import android.annotation.TargetApi;
 import android.app.TimePickerDialog;
 import android.content.ClipboardManager;
 import android.os.Build;
 import android.support.v7.widget.SwitchCompat;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,12 +48,22 @@ public class SettingsActivity extends AppCompatActivity {
     int hour, min;
 
     ClipboardManager myClipboard;
+    boolean doubleBackToExitPressedOnce = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        //toolbar settings
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("settings");
+
+        //display back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setGravity(toolbar.TEXT_ALIGNMENT_GRAVITY);
 
         localData = new LocalData(getApplicationContext());
 
@@ -55,6 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
         tvTime = (TextView) findViewById(R.id.tv_reminder_time_desc);
 
         reminderSwitch = (SwitchCompat) findViewById(R.id.timerSwitch);
+
 
         hour = localData.get_hour();
         min = localData.get_min();
@@ -88,16 +109,39 @@ public class SettingsActivity extends AppCompatActivity {
                 if (localData.getReminderStatus())
                     showTimePickerDialog(localData.get_hour(), localData.get_min());
             }
+
         });
 
         ll_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Toast.makeText(getApplicationContext(), "Terms and conditions-2", Toast.LENGTH_SHORT).show();
             }
         });
 
+        //to add the card textView with animation
+        initView();
+    }
 
+
+    private void initView() {
+
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+        alphaAnimation.setDuration(300);
+        alphaAnimation.setStartOffset(600);
+        TextView tv_about_version = findViewById(R.id.tv_about_version);
+        tv_about_version.setText(AppUtils.getVersionName(this));
+        tv_about_version.startAnimation(alphaAnimation);
+
+        TextView tv_reminder_label = findViewById(R.id.tv_reminder_label);
+        tv_reminder_label.startAnimation(alphaAnimation);
+        TextView tv_reminder_time_label = findViewById(R.id.tv_reminder_time_label);
+        tv_reminder_time_label.startAnimation(alphaAnimation);
+        TextView tv_agree_terms_label = findViewById(R.id.tv_agree_terms_label);
+        tv_agree_terms_label.startAnimation(alphaAnimation);
+        TextView tv_agree_privacy_label = findViewById(R.id.tv_agree_privacy_label);
+        tv_agree_privacy_label.startAnimation(alphaAnimation);
 
     }
 

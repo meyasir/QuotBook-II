@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
     Fragment fragment;
     FragmentManager fragmentManager;
     TextView mlaunchCount;
-    Button mButtonNotify;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("main activity");
+        getSupportActionBar().setTitle("Random quotes");
 
         //display back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -142,10 +142,31 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
         });
 
 
-
         initData();
         initView();
     }
+
+    @Override
+    public void onBackPressed() {
+
+        //2nd condition for fragment to exit when back pressed one time.
+        if (doubleBackToExitPressedOnce || fragmentManager.getBackStackEntryCount() != 0) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "press back again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+
 
     //rate us dialog
     private void showRateAppDialog() {
@@ -287,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
                 break;
             }
             case R.id.action_about: {
-                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
 
                 //animation applied
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());

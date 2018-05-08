@@ -44,7 +44,7 @@
     <string name="title_activity_author">AuthorActivity</string>
     <string name="title_activity_category">CategoryActivity</string>
     <string name="title_activity_legal">LegalActivity</string>
-    <string name="about_card1_message">Glad to see you</string>
+    <string name="about_card1_message">About us</string>
     <string name="about_card2_title">If you Liked our app, feel free to contact us</string>
     <string name="about_google_play">rate on Google Play</string>
     <string name="about_email">Feedback by email</string>
@@ -76,7 +76,7 @@
     <string name="share_email_gmail">Gmail</string>
     <string name="share_sms">share_sms</string>
 
-<!--rate us dialog-->
+    <!--rate us dialog-->
 
     <string name="rate_app_title">Rate our App</string>
     <string name="rate_app_message">If you like our app, please take a moment to rate it in play store!</string>
@@ -92,5 +92,6 @@
     <string name="sett_reminder_desc">We will remind you to make entiries of your expense</string>
     <string name="sett_reminder_time_label">Set Reminder Time</string>
     <string name="sett_reminder_time_content">8 : 00 PM</string>
+    <string name="start">starting this intro</string>
 
 </resources>
