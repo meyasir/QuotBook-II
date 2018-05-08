@@ -33,6 +33,11 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.security.ProviderInstaller;
 import com.quotebook.samirk433.quotebook.R;
 import com.samirk433.quotebook.data.model.PhotoUnsplash;
 import com.samirk433.quotebook.data.repo.QuoteRepository;
@@ -128,8 +133,24 @@ public class QuoteActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.layout_show_thumbnail:
-                showThumbnailDialog();
-                //saveImage();
+
+                int errorCode = -1000;
+                GoogleApiAvailability googleApiAvailability = null;
+                try {
+                    googleApiAvailability = GoogleApiAvailability.getInstance();
+                    errorCode = googleApiAvailability.isGooglePlayServicesAvailable(this);
+                    ProviderInstaller.installIfNeeded(this);
+                    showThumbnailDialog();
+                } catch (GooglePlayServicesRepairableException e) {
+                    Log.e(TAG, "Google Play Exception", e);
+                    if (googleApiAvailability != null)
+                        googleApiAvailability.getErrorDialog(this, errorCode, 1);
+
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    Log.e(TAG, "Google Play Exception", e);
+                    if (googleApiAvailability != null)
+                        googleApiAvailability.getErrorDialog(this, errorCode, 1);
+                }
                 break;
         }
     }
