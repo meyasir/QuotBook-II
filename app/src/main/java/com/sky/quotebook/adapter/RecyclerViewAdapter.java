@@ -12,16 +12,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 
 import com.sky.quotebook.R;
-import com.sky.quotebook.interfaces.ItemClickListener;
 import com.sky.quotebook.interfaces.onMoveAndSwipedListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-/**
- * Created by Yasir on 3/19/2018.
- */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements onMoveAndSwipedListener {
 
@@ -140,8 +135,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
-
-    private class RecyclerViewHolder extends RecyclerView.ViewHolder  {
+    private class RecyclerViewHolder extends RecyclerView.ViewHolder {
         private View mView;
 
         private RecyclerViewHolder(View itemView) {

@@ -1,6 +1,6 @@
 package com.sky.quotebook.activities;
 
-import android.os.Handler;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -20,18 +20,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -39,16 +32,12 @@ import java.util.Locale;
 public class SettingsActivity extends AppCompatActivity {
     String TAG = "RemindMe";
     LocalData localData;
-
     SwitchCompat reminderSwitch;
     TextView tvTime;
-
     LinearLayout ll_set_time, ll_terms;
-
     int hour, min;
-
     ClipboardManager myClipboard;
-    boolean doubleBackToExitPressedOnce = false;
+    LinearLayout ll_help;
 
 
     @Override
@@ -71,11 +60,11 @@ public class SettingsActivity extends AppCompatActivity {
 
         ll_set_time = (LinearLayout) findViewById(R.id.ll_set_time);
         ll_terms = (LinearLayout) findViewById(R.id.ll_terms);
+        ll_help = (LinearLayout) findViewById(R.id.ll_help);
 
         tvTime = (TextView) findViewById(R.id.tv_reminder_time_desc);
 
         reminderSwitch = (SwitchCompat) findViewById(R.id.timerSwitch);
-
 
         hour = localData.get_hour();
         min = localData.get_min();
@@ -120,6 +109,16 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        ll_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    Intent intent = new Intent(SettingsActivity.this, IntroDemoActivity.class);
+                    startActivity(intent);
+            }
+
+        });
+
         //to add the card textView with animation
         initView();
     }
@@ -145,7 +144,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-
     private void showTimePickerDialog(int h, int m) {
 
         LayoutInflater inflater = getLayoutInflater();
@@ -161,7 +159,6 @@ public class SettingsActivity extends AppCompatActivity {
                         localData.set_min(min);
                         tvTime.setText(getFormatedTime(hour, min));
                         NotificationScheduler.setReminder(SettingsActivity.this, AlarmReceiver.class, localData.get_hour(), localData.get_min());
-
 
                     }
                 }, h, m, false);

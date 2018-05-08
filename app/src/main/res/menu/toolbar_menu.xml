@@ -8,21 +8,18 @@
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_about"
-        android:title="@string/action_about"
-        app:showAsAction="never" />
 
-    <item android:id="@+id/action_save"
-        android:title="save me"
+
+    <item
+        android:id="@+id/action_save"
         android:icon="@drawable/ic_save_white_24dp"
-        app:showAsAction="always"/>
+        android:title="save me"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_share"
-        android:title="@string/share_with"
         android:icon="@drawable/ic_share_white_24dp_svg"
-        app:showAsAction="always"
-        />
+        android:title="@string/share_with"
+        app:showAsAction="always" />
 
 </menu>

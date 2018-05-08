@@ -17,6 +17,9 @@ public class IntroDemoActivity extends OnboarderActivity {
 
     List<OnboarderPage> onboarderPages;
     String finishButton;
+    int titleTextSize;
+    int descriptionTextSize;
+    boolean multilineDescriptionCentered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class IntroDemoActivity extends OnboarderActivity {
         // Create your first page
         OnboarderPage onboarderPage1 = new OnboarderPage("Title 1", "Description 1");
         OnboarderPage onboarderPage2 = new OnboarderPage(R.string.app_name, R.string.app_message, R.drawable.googleg_standard_color_18);
-OnboarderPage onboarderPage3= new OnboarderPage("third", "Description");
+        OnboarderPage onboarderPage3 = new OnboarderPage("third", "Description");
         // You can define title and description colors (by default white)
         onboarderPage1.setTitleColor(R.color.black);
         onboarderPage1.setDescriptionColor(R.color.white);
@@ -58,9 +61,9 @@ OnboarderPage onboarderPage3= new OnboarderPage("third", "Description");
         setSkipButtonTitle("Skip");
         setFinishButton("Finish");
         setSkipButtonHidden();
-        //setTitleTextSize(12);
-        //setDescriptionTextSize(12);
-        //setMultilineDescriptionCentered(true);
+        setTitleTextSize(12);
+        setDescriptionTextSize(12);
+        setMultilineDescriptionCentered(true);
     }
 
     @Override
@@ -74,15 +77,37 @@ OnboarderPage onboarderPage3= new OnboarderPage("third", "Description");
 
     @Override
     public void onFinishButtonPressed() {
-        Intent intent = new Intent(IntroDemoActivity.this, MainActivity.class);
-        startActivity(intent);
-        //to exit from app on back press
+
+        //intent will only call for the first time when user click on finish button, other times clicking on finish it'll call finish() method
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            Intent intent = new Intent(IntroDemoActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isFirstRun", false).commit();
+
+        //finishes main activity
         finish();
-        Toast.makeText(getApplicationContext(), "Finished", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "app tour ended", Toast.LENGTH_SHORT).show();
         // Define your actions when the user press 'Finish' button
     }
 
     public void setFinishButton(String finishButton) {
         this.finishButton = finishButton;
+    }
+
+    public void setTitleTextSize(int titleTextSize) {
+        this.titleTextSize = titleTextSize;
+    }
+
+    public void setDescriptionTextSize(int descriptionTextSize) {
+        this.descriptionTextSize = descriptionTextSize;
+    }
+
+    public void setMultilineDescriptionCentered(boolean multilineDescriptionCentered) {
+        this.multilineDescriptionCentered = multilineDescriptionCentered;
     }
 }

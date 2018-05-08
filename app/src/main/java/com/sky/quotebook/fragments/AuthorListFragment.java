@@ -13,15 +13,6 @@ import android.view.ViewGroup;
 
 import com.sky.quotebook.R;
 import com.sky.quotebook.adapter.CustomAuthorListAdapter;
-import com.sky.quotebook.interfaces.ItemClickListener;
-import com.sky.quotebook.model.Author;
-import com.sky.quotebook.model.AuthorManager;
-
-import java.util.List;
-
-/**
- * Created by Yasir on 16-Apr-18.
- */
 
 public class AuthorListFragment extends Fragment {
     CustomAuthorListAdapter fragmentTestAdapter;
@@ -63,6 +54,5 @@ public class AuthorListFragment extends Fragment {
                 linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         return view;
-
     }
 }

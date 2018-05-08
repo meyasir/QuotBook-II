@@ -1,33 +1,21 @@
 package com.sky.quotebook.activities;
 
 import android.app.ActivityOptions;
-import android.app.AlarmManager;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.renderscript.RenderScript;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,16 +23,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.transition.Explode;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,15 +36,10 @@ import com.sky.quotebook.R;
 import com.sky.quotebook.adapter.RecyclerViewAdapter;
 import com.sky.quotebook.fragments.AuthorListFragment;
 import com.sky.quotebook.fragments.CategoryListFragment;
-import com.sky.quotebook.fragments.SetupFragment;
-import com.sky.quotebook.interfaces.ItemClickListener;
 import com.sky.quotebook.model.AppPreferences;
-import com.sky.quotebook.model.Author;
-import com.sky.quotebook.model.Constant;
 import com.sky.quotebook.view.ItemTouchHelperCallback;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
@@ -74,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
     private String insertData;
     private boolean loading;
     private int loadTimes;
-    private List<Author> authors;
-    private ItemClickListener mListener;
 
     BottomNavigationView bottomNavigation;
     Fragment fragment;
@@ -140,6 +115,19 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
                 return true;
             }
         });
+
+        //launch the help tour i-e IntroDemoActivity for the first time after installation of app
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            //show intro activity
+            startActivity(new Intent(MainActivity.this, IntroDemoActivity.class));
+            Toast.makeText(MainActivity.this, "Presented for 1st time only", Toast.LENGTH_LONG)
+                    .show();
+        }
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isFirstRun", false).commit();
 
 
         initData();
@@ -303,14 +291,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
             case R.id.action_settings: {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
 
-                //Starting a new activity will have these applied animations
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-                break;
-            }
-            case R.id.action_about: {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-
-                //animation applied
+                //Starting a new activity will have animations
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
             }
@@ -319,6 +300,8 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
                 //add your fav quote, author, and category
                 Toast.makeText(getApplicationContext(), "save", Toast.LENGTH_SHORT).show();
             }
+            break;
+
             case R.id.action_share: {
                 // onShareClick(bottomNavigation);
                 GeneralDialogFragment generalDialogFragment =

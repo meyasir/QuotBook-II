@@ -1,33 +1,15 @@
 package com.sky.quotebook.adapter;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.provider.ContactsContract;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.CardView;
+
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sky.quotebook.R;
-import com.sky.quotebook.interfaces.ItemClickListener;
-import com.sky.quotebook.model.Author;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by Yasir on 16-Apr-18.
- */
 
 public class CustomAuthorListAdapter extends RecyclerView.Adapter<CustomAuthorListAdapter.FragmentCustomViewHolder> {
 
@@ -58,7 +40,7 @@ public class CustomAuthorListAdapter extends RecyclerView.Adapter<CustomAuthorLi
         return data.length;
     }
 
-    public class FragmentCustomViewHolder extends RecyclerView.ViewHolder  {
+    public class FragmentCustomViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewAuthorBio;
         LinearLayout linearLayout;

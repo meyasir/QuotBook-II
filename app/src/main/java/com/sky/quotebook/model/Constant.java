@@ -1,8 +1,5 @@
 package com.sky.quotebook.model;
 
-/**
- * Created by zhang on 2016.09.23.
- */
 public class Constant {
 
     public static String APP_URL = "https://play.google.com/store/apps/details?id=com.eajy.materialdesigndemo";

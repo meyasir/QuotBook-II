@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    aa2200
-    BF2B06
-
     <color name="colorPrimary">#bf2b06</color>
     <color name="colorPrimaryDark">#8c1b00</color>
     <color name="colorAccent">#010578</color>
 
-    <color name="colorPrimaryLight">#e7f26145</color>
-
-
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="gray">#999999</color>
     <color name="activity_background">#EEEEEE</color>
-
 
     <!-- Material Design Color - Color palette -->
 
@@ -22,22 +14,20 @@
     <color name="google_blue">#4285F4</color>
     <color name="google_green">#34A853</color>
     <color name="google_yellow">#FBBC05</color>
-    <color name="google_red">#EA4335</color>
 
     <!-- Google Apps Color -->
 
-    <color name="color_main_background">#eee</color>
     <color name="text_color_item_view">#4e4d4d</color>
 
     <!--  Some colors for Notifications in settings, listed under -->
 
     <color name="textColorHeader">#1d057e</color>
     <color name="textColorPrimary">#000000</color>
-    <color name="textColorSecondary">#ef5757</color>
+    <color name="textColorSecondary">#EA4335</color>
 
     <!--switch color-->
 
-    <color name="thumb_active">#fa7d7d</color>
+    <color name="thumb_active">#ea4330</color>
     <color name="track_active">#ede9b4b4</color>
 
     <color name="thumb_inactive">#f2f0f0</color>

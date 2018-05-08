@@ -6,10 +6,6 @@ import android.content.pm.PackageManager;
 
 import com.sky.quotebook.R;
 
-/**
- * Created by zhang on 2017.11.22.
- */
-
 public class AppUtils {
 
     public static boolean checkAppInstalled(Context context, String packageName) {

@@ -8,54 +8,11 @@
     <string name="item_swipe_dismissed">Dismissed</string>
     <string name="item_swipe_undo">Undo</string>
     <string name="bio_of_author">Bio</string>
-    <string name="details_of_author">Author Details</string>
-
-    <!-- String related to Login -->
-
-    <!-- Strings related to Settings -->
-
-    <!-- String related to About -->
-
     <string name="about_version">Version: </string>
-
-    <!-- String related to Donate -->
-
-    <!-- String related to Ad -->
-
-    <string-array name="author_keys">
-        <item>newyork</item>
-        <item>tokyo</item>
-        <item>london</item>
-        <item>shanghai</item>
-        <item>beijing</item>
-        <item>moscow</item>
-        <item>hongkong</item>
-        <item>mumbai</item>
-        <item>singapore</item>
-        <item>chicago</item>
-    </string-array>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-    <string name="action_about">About</string>
-
-    <string name="title_activity_author">AuthorActivity</string>
-    <string name="title_activity_category">CategoryActivity</string>
-    <string name="title_activity_legal">LegalActivity</string>
     <string name="about_card1_message">About us</string>
-    <string name="about_card2_title">If you Liked our app, feel free to contact us</string>
-    <string name="about_google_play">rate on Google Play</string>
-    <string name="about_email">Feedback by email</string>
-    <string name="about_git_hub">source code on GitHub</string>
-    <string name="about_address">Islamabad, Pakistan</string>
-    <string name="about_email_intent">about app</string>
-    <string name="about_not_found_email">not found email app</string>
-    <string name="about_source_licenses">open source licenes</string>
-    <string name="dialog_close">close dialog</string>
-    <string name="share_this_app">Share this app with your loved ones</string>
-    <string name="fragment_title_grandstats">backQuote</string>
+    <string name="help_message">Help</string>
+    <string name="help_sub_heading_message">open app tour</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -65,18 +22,6 @@
     <string name="share_with">share with</string>
     <string name="author_name">author name</string>
     <string name="logoTransitionName">Tansitional image view</string>
-
-    <!--List share dialog Strings-->
-
-    <string name="share_email_native">share Email native</string>
-    <string name="share_email_subject">share Email Subject</string>
-    <string name="share_chooser_text">share with</string>
-    <string name="share_twitter">shared on twitter</string>
-    <string name="share_facebook">shared on facebook</string>
-    <string name="share_email_gmail">Gmail</string>
-    <string name="share_sms">share_sms</string>
-
-    <!--rate us dialog-->
 
     <string name="rate_app_title">Rate our App</string>
     <string name="rate_app_message">If you like our app, please take a moment to rate it in play store!</string>
@@ -92,6 +37,5 @@
     <string name="sett_reminder_desc">We will remind you to make entiries of your expense</string>
     <string name="sett_reminder_time_label">Set Reminder Time</string>
     <string name="sett_reminder_time_content">8 : 00 PM</string>
-    <string name="start">starting this intro</string>
 
 </resources>

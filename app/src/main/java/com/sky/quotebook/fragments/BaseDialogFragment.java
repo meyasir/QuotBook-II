@@ -3,10 +3,6 @@ package com.sky.quotebook.fragments;
 import android.app.Activity;
 import android.support.v4.app.DialogFragment;
 
-/**
- * Created by Yasir on 24-Apr-18.
- */
-
 public abstract class BaseDialogFragment<T> extends DialogFragment {
     private T mActivityInstance;
 

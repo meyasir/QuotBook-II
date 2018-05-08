@@ -7,8 +7,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.sky.quotebook.interfaces.onMoveAndSwipedListener;
 
 /**
- * Created by Yasir on 3/19/2018.
- * Support every kind of Motion i-e Swapping Left or right (to delete), Moving up or down(to place items of rec-view)
+ * Support few Motion transition i-e Swapping Left or right (to delete), Moving up or down(to place items of rec-view)
  */
 
 public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {

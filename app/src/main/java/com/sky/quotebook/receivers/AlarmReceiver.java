@@ -10,11 +10,7 @@ import com.sky.quotebook.model.LocalData;
 import com.sky.quotebook.model.NotificationScheduler;
 
 
-/**
- * Created by Yasir on 03-May-18.
- */
-
-public class AlarmReceiver extends BroadcastReceiver{
+public class AlarmReceiver extends BroadcastReceiver {
 
     String TAG = "AlarmReceiver";
 
