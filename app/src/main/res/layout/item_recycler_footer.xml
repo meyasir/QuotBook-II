@@ -4,4 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
-    android:layout_margin="@dimen/text_margin_small" />
+    android:layout_margin="@dimen/text_margin_small"/>

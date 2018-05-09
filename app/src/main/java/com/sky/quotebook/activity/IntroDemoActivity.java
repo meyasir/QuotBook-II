@@ -1,4 +1,4 @@
-package com.sky.quotebook.activities;
+package com.sky.quotebook.activity;
 
 import android.content.Intent;
 import android.graphics.Color;

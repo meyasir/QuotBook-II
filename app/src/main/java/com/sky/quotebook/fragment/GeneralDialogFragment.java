@@ -1,4 +1,4 @@
-package com.sky.quotebook.fragments;
+package com.sky.quotebook.fragment;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 
 /**
- * created am app level dialog ('ll work in Fragment as well in activities)to share quotes and app
+ * created am app level dialog ( work in Fragment as well in activities)to share quotes and app
  * General Dialog have two buttons, ok & cancel
  */
 

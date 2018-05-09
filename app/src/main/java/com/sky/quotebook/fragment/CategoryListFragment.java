@@ -1,9 +1,8 @@
-package com.sky.quotebook.fragments;
+package com.sky.quotebook.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,42 +11,42 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sky.quotebook.R;
-import com.sky.quotebook.adapter.CustomAuthorListAdapter;
+import com.sky.quotebook.adapter.CustomCategoryListAdapter;
 
-public class AuthorListFragment extends Fragment {
-    CustomAuthorListAdapter fragmentTestAdapter;
+public class CategoryListFragment extends
+        Fragment {
+
     LinearLayoutManager linearLayoutManager;
     RecyclerView mRecyclerView;
+    CustomCategoryListAdapter customCategoryListAdapter;
 
-    public AuthorListFragment() {
+
+    public CategoryListFragment() {
         // Required empty public constructor
     }
 
-    public static AuthorListFragment newInstance() {
-        AuthorListFragment fragment = new AuthorListFragment();
+    public static CategoryListFragment newInstance() {
+        CategoryListFragment fragment = new CategoryListFragment();
         return fragment;
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_author_list, null);
+        View view = inflater.inflate(R.layout.fragment_category_list, null);
 
-        String[] data = {"Martin Luther King Jr.", "Lao-tzu", "Fran Lebowitz ", "C. S. Lewis ", "Abraham Lincoln ",
-                "Groucho Marx ", "W. Somerset Maugham", "H. L. Mencken", "Mother Teresa", "Friedrich Nietzsche", "Auth_11"
-                , "Auth_12", "Auth_13", "Auth_14", "Auth_15", "Auth_16", "Auth_17", "Auth_18"};
+        String[] data = {"Love", "Romantic", "Universal", "Motivational", "Craze", "Care", "Funny", "Inspirational", "Risk",
+                "Relation", "Boyhood", "Serious", "Moody", "Combo", "cat_15", "cat_16", "cat_17", "cat_18"};
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rec_fragment_try_test_list);
-
-        //animation applied
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
+        mRecyclerView = view.findViewById(R.id.rec_category_list_fragment);
         linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        fragmentTestAdapter = new CustomAuthorListAdapter(data);
-        mRecyclerView.setAdapter(fragmentTestAdapter);
+        customCategoryListAdapter = new CustomCategoryListAdapter(data);
+        mRecyclerView.setAdapter(customCategoryListAdapter);
 
+        getActivity().setTitle("Team B");
 
         //To show Bottom Navigation view
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
@@ -55,4 +54,5 @@ public class AuthorListFragment extends Fragment {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         return view;
     }
+
 }

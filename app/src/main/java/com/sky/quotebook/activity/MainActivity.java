@@ -1,14 +1,16 @@
-package com.sky.quotebook.activities;
+package com.sky.quotebook.activity;
 
 import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,6 +18,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,15 +30,22 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sky.quotebook.fragments.GeneralDialogFragment;
-import com.sky.quotebook.fragments.NoteFragment;
+import com.bumptech.glide.Glide;
+import com.sky.quotebook.fragment.GeneralDialogFragment;
+import com.sky.quotebook.fragment.NoteFragment;
 import com.sky.quotebook.R;
 import com.sky.quotebook.adapter.RecyclerViewAdapter;
-import com.sky.quotebook.fragments.AuthorListFragment;
-import com.sky.quotebook.fragments.CategoryListFragment;
+import com.sky.quotebook.fragment.AuthorListFragment;
+import com.sky.quotebook.fragment.CategoryListFragment;
 import com.sky.quotebook.model.AppPreferences;
 import com.sky.quotebook.view.ItemTouchHelperCallback;
 
@@ -58,6 +68,41 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
     TextView mlaunchCount;
     boolean doubleBackToExitPressedOnce = false;
 
+
+    private RelativeLayout relative_main;
+    ImageView img_page_start;
+    private static boolean isShowPageStart = true;
+    private final int MESSAGE_SHOW_START_PAGE = 0x002;
+
+    public Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+
+                case MESSAGE_SHOW_START_PAGE:
+                    AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+                    alphaAnimation.setDuration(200);
+                    alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            relative_main.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    relative_main.startAnimation(alphaAnimation);
+                    break;
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +177,20 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
 
         initData();
         initView();
+
+        //shows each time the fake splash screen with our logo after clearing from cache
+        SharedPreferences sharedPreferences = getSharedPreferences("app", MODE_PRIVATE);
+
+        if (isShowPageStart) {
+            relative_main.setVisibility(View.VISIBLE);
+            Glide.with(MainActivity.this).load(R.drawable.ic_logo_square_red).into(img_page_start);
+            if (sharedPreferences.getBoolean("isFirst", true)) {
+                mHandler.sendEmptyMessageDelayed(MESSAGE_SHOW_START_PAGE, 2000);
+            } else {
+                mHandler.sendEmptyMessageDelayed(MESSAGE_SHOW_START_PAGE, 1000);
+            }
+            isShowPageStart = false;
+        }
     }
 
     @Override
@@ -160,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
     private void showRateAppDialog() {
         boolean bool = AppPreferences.getInstance(getApplicationContext()).getAppRate();
         int i = AppPreferences.getInstance(getApplicationContext()).getLaunchCount();
-        if ((bool) && (i == 2)) {
+        if ((bool) && (i == 3)) {
             createAppRatingDialog(getString(R.string.rate_app_title), getString(R.string.rate_app_message)).show();
         }
     }
@@ -222,9 +281,13 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
     }
 
     private void initView() {
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_1);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        relative_main = findViewById(R.id.relative_main);
+        img_page_start = findViewById(R.id.img_page_start);
 
         adapter = new RecyclerViewAdapter(this);
         mRecyclerView.setAdapter(adapter);

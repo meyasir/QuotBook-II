@@ -1,4 +1,4 @@
-package com.sky.quotebook.fragments;
+package com.sky.quotebook.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

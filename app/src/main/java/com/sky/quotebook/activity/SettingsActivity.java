@@ -1,4 +1,4 @@
-package com.sky.quotebook.activities;
+package com.sky.quotebook.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.sky.quotebook.R;
 import com.sky.quotebook.model.LocalData;
 import com.sky.quotebook.model.NotificationScheduler;
-import com.sky.quotebook.receivers.AlarmReceiver;
+import com.sky.quotebook.receiver.AlarmReceiver;
 import com.sky.quotebook.util.AppUtils;
 
 import android.annotation.TargetApi;
@@ -20,8 +20,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -125,6 +128,10 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     private void initView() {
+//first 3 lines for card
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_about_card_show);
+        ScrollView scroll_about = findViewById(R.id.scroll_settings);
+        scroll_about.startAnimation(animation);
 
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
         alphaAnimation.setDuration(300);

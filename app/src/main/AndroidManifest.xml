@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -26,16 +26,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:label="settings"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".activities.MainActivity"/>
+            android:parentActivityName=".activity.MainActivity"/>
 
-        <activity android:name=".activities.IntroDemoActivity"></activity>
+        <activity android:name=".activity.IntroDemoActivity"></activity>
 
         <!-- Register the Alarm Receiver -->
         <receiver
-            android:name=".receivers.AlarmReceiver"
+            android:name=".receiver.AlarmReceiver"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

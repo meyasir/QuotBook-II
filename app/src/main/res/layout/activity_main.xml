@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sky.quotebook.activities.MainActivity">
+    tools:context="com.sky.quotebook.activity.MainActivity">
 
     <include layout="@layout/toolbar_layout" />
+
+    <include layout="@layout/page_start" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
         android:orientation="vertical">
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_1"
@@ -22,6 +26,8 @@
             android:background="@color/activity_background"
             android:paddingEnd="@dimen/zero_horizontal_margin_big_activity"
             android:paddingStart="@dimen/zero_horizontal_margin_big_activity" />
+
+
 
         <TextView
             android:id="@+id/launchCount"

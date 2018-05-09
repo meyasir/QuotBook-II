@@ -22,7 +22,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private Context context;
     private List<String> mItems;
-    private int color = 0;
     private View parentView;
 
     private final int TYPE_NORMAL = 1;
@@ -93,7 +92,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             aa1.setDuration(400);
             AlphaAnimation aa = new AlphaAnimation(0.1f, 1.0f);
             aa.setDuration(400);
-
         }
     }
 

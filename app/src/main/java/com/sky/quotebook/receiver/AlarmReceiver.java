@@ -1,11 +1,11 @@
-package com.sky.quotebook.receivers;
+package com.sky.quotebook.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.sky.quotebook.activities.MainActivity;
+import com.sky.quotebook.activity.MainActivity;
 import com.sky.quotebook.model.LocalData;
 import com.sky.quotebook.model.NotificationScheduler;
 
