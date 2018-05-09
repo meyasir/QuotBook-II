@@ -28,7 +28,8 @@
         <activity
             android:name=".activities.SettingsActivity"
             android:label="settings"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activities.MainActivity"/>
 
         <activity android:name=".activities.IntroDemoActivity"></activity>
 

@@ -34,8 +34,8 @@
 
     <string name="sett_reminder_header">Set Reminder</string>
     <string name="sett_reminder_label">Remind Me</string>
-    <string name="sett_reminder_desc">We will remind you to make entiries of your expense</string>
+    <string name="sett_reminder_desc">We will remind you with the recommended Quotes on your chosen time.</string>
     <string name="sett_reminder_time_label">Set Reminder Time</string>
-    <string name="sett_reminder_time_content">8 : 00 PM</string>
+    <string name="sett_reminder_time_content">9 : 00 PM</string>
 
 </resources>
