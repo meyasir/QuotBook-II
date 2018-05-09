@@ -62,10 +62,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyItemRemoved(mItems.size());
     }
 
-    public void setColor(int color) {
-        this.color = color;
-        notifyDataSetChanged();
-    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
