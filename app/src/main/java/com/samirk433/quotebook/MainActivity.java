@@ -17,10 +17,17 @@ import com.samirk433.quotebook.data.DatabaseManager;
 import com.samirk433.quotebook.data.repo.QuoteRepository;
 import com.samirk433.quotebook.utils.constant.AppConstant;
 
+
 import java.util.List;
 
 public class MainActivity extends FragmentActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+
+    // Used to load the 'native-lib' library on application startup.
+    // JNI part!
+    static {
+        System.loadLibrary("native-lib");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,8 @@ public class MainActivity extends FragmentActivity {
             textQuote = itemView.findViewById(R.id.text_quote);
         }
     }
+
+
 
     private class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 

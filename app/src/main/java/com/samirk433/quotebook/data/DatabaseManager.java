@@ -15,6 +15,7 @@ import com.samirk433.quotebook.data.model.CategoryModel;
 import com.samirk433.quotebook.data.repo.QuoteRepository;
 import com.samirk433.quotebook.utils.RandomNumberGenerator;
 
+
 import java.util.List;
 
 /**
@@ -158,7 +159,7 @@ public class DatabaseManager {
 
         List<CategoryModel> list = null;
         try {
-            mDatabase = mDbHelper.getReadableDatabase();
+           mDatabase = mDbHelper.getReadableDatabase();
 
             /*
             * instead of making a new method asking for favourite cat
@@ -242,4 +243,6 @@ public class DatabaseManager {
         }
         return false;
     }
+
+
 }

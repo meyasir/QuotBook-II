@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,6 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         try {
             if (!exists() && !isDataLoaded()) {
+
                 this.getReadableDatabase();
                 init();
                 return true;
@@ -79,6 +81,7 @@ public class DbHelper extends SQLiteOpenHelper {
             Cursor c = database.rawQuery(query, null);
             if(c == null)
                 throw  new SQLiteException("Cursor is NULL");
+            database.close();
             return true;
         }catch (SQLiteException e){
         }
@@ -101,8 +104,9 @@ public class DbHelper extends SQLiteOpenHelper {
         mInputStream.close();
     }
 
+
     public static DbHelper getInstance(final Context context) {
-        Log.d(TAG, "hit getInstance()");
+        Log.d(TAG, "getInstance()");
 
         PATH = String.format("/data/data/%s/databases/", context.getPackageName());
         if (sHelper == null)
@@ -112,4 +116,5 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         return sHelper;
     }
+
 }
