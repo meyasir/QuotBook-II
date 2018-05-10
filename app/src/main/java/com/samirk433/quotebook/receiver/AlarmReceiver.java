@@ -1,13 +1,13 @@
-package com.sky.quotebook.receiver;
+package com.samirk433.quotebook.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.sky.quotebook.activity.MainActivity;
-import com.sky.quotebook.model.LocalData;
-import com.sky.quotebook.model.NotificationScheduler;
+import com.samirk433.quotebook.activity.MainActivity;
+import com.samirk433.quotebook.model.LocalData;
+import com.samirk433.quotebook.model.NotificationScheduler;
 
 
 public class AlarmReceiver extends BroadcastReceiver {

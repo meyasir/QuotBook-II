@@ -1,4 +1,4 @@
-package com.sky.quotebook.activity;
+package com.samirk433.quotebook.activity;
 
 import android.app.ActivityOptions;
 import android.content.ComponentName;
@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -39,15 +40,16 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.bumptech.glide.Glide;
-import com.sky.quotebook.fragment.GeneralDialogFragment;
-import com.sky.quotebook.fragment.NoteFragment;
-import com.sky.quotebook.R;
-import com.sky.quotebook.adapter.RecyclerViewAdapter;
-import com.sky.quotebook.fragment.AuthorListFragment;
-import com.sky.quotebook.fragment.CategoryListFragment;
-import com.sky.quotebook.model.AppPreferences;
-import com.sky.quotebook.view.ItemTouchHelperCallback;
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.adapter.RecyclerViewAdapter;
+import com.samirk433.quotebook.fragment.AuthorListFragment;
+import com.samirk433.quotebook.fragment.CategoryListFragment;
+import com.samirk433.quotebook.fragment.GeneralDialogFragment;
+import com.samirk433.quotebook.fragment.NoteFragment;
+import com.samirk433.quotebook.model.AppPreferences;
+import com.samirk433.quotebook.view.ItemTouchHelperCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +58,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements GeneralDialogFragment.OnDialogFragmentClickListener {
 
     private RecyclerView mRecyclerView;
-    private RecyclerViewAdapter adapter;
+    private com.samirk433.quotebook.adapter.RecyclerViewAdapter adapter;
     private List<String> data;
     private String insertData;
     private boolean loading;
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
 
         //launch rate app dialog
         mlaunchCount = (TextView) findViewById(R.id.launchCount);
-        AppPreferences.getInstance(getApplicationContext()).incrementLaunchCount();
+        com.samirk433.quotebook.model.AppPreferences.getInstance(getApplicationContext()).incrementLaunchCount();
         mlaunchCount.setText(getString(R.string.app_message,
                 AppPreferences.getInstance(getApplicationContext()).getLaunchCount()));
         showRateAppDialog();
@@ -282,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
 
     private void initView() {
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_1);
+        mRecyclerView = findViewById(R.id.recycler_view_1);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
@@ -298,7 +300,6 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
         ItemTouchHelper.Callback callback = new ItemTouchHelperCallback(adapter);
         ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
-
 
         RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
 
@@ -348,6 +349,8 @@ public class MainActivity extends AppCompatActivity implements GeneralDialogFrag
         return true;
     }
 
+    // TODO: 5/11/2018 tell yasir
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

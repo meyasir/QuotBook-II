@@ -38,7 +38,7 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.security.ProviderInstaller;
-import com.quotebook.samirk433.quotebook.R;
+import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.data.model.PhotoUnsplash;
 import com.samirk433.quotebook.data.repo.QuoteRepository;
 import com.samirk433.quotebook.utils.FileUtils;

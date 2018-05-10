@@ -23,7 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
-import com.quotebook.samirk433.quotebook.R;
+import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.data.model.PhotoUnsplash;
 
 import java.io.IOException;

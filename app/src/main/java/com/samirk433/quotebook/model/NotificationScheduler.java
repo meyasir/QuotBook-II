@@ -1,4 +1,4 @@
-package com.sky.quotebook.model;
+package com.samirk433.quotebook.model;
 
 
 import android.app.AlarmManager;
@@ -14,7 +14,8 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
-import com.sky.quotebook.R;
+
+import com.samirk433.quotebook.R;
 
 import java.util.Calendar;
 

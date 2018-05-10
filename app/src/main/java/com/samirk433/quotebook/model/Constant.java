@@ -1,4 +1,4 @@
-package com.sky.quotebook.model;
+package com.samirk433.quotebook.model;
 
 public class Constant {
 

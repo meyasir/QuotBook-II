@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
 
-import com.quotebook.samirk433.quotebook.R;
+import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.utils.constant.AppConstant;
 
 /**

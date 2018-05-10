@@ -1,4 +1,4 @@
-package com.sky.quotebook.fragment;
+package com.samirk433.quotebook.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,15 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sky.quotebook.R;
-import com.sky.quotebook.adapter.CustomCategoryListAdapter;
+import com.samirk433.quotebook.R;
+
 
 public class CategoryListFragment extends
         Fragment {
 
     LinearLayoutManager linearLayoutManager;
     RecyclerView mRecyclerView;
-    CustomCategoryListAdapter customCategoryListAdapter;
+    com.samirk433.quotebook.adapter.CustomCategoryListAdapter customCategoryListAdapter;
 
 
     public CategoryListFragment() {
@@ -43,7 +43,7 @@ public class CategoryListFragment extends
         linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        customCategoryListAdapter = new CustomCategoryListAdapter(data);
+        customCategoryListAdapter = new com.samirk433.quotebook.adapter.CustomCategoryListAdapter(data);
         mRecyclerView.setAdapter(customCategoryListAdapter);
 
         getActivity().setTitle("Team B");

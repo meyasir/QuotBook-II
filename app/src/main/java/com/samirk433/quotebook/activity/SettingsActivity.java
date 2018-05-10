@@ -1,14 +1,9 @@
-package com.sky.quotebook.activity;
+package com.samirk433.quotebook.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.sky.quotebook.R;
-import com.sky.quotebook.model.LocalData;
-import com.sky.quotebook.model.NotificationScheduler;
-import com.sky.quotebook.receiver.AlarmReceiver;
-import com.sky.quotebook.util.AppUtils;
 
 import android.annotation.TargetApi;
 import android.app.TimePickerDialog;
@@ -28,6 +23,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.model.LocalData;
+import com.samirk433.quotebook.model.NotificationScheduler;
+import com.samirk433.quotebook.receiver.AlarmReceiver;
+import com.samirk433.quotebook.utils.AppUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;

@@ -3,15 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.samirk433.quotebook.MainActivity">
-
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview_quote"
-    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-</android.support.v7.widget.RecyclerView>
 
     <include layout="@layout/toolbar_layout" />
 
@@ -22,7 +14,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
         android:orientation="vertical">
-
 
 
         <android.support.v7.widget.RecyclerView

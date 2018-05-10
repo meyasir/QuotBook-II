@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
-import com.quotebook.samirk433.quotebook.R;
+import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.utils.constant.AppConstant;
 
 import java.io.File;

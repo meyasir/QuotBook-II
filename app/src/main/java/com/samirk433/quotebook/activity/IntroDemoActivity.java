@@ -1,4 +1,4 @@
-package com.sky.quotebook.activity;
+package com.samirk433.quotebook.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.chyrta.onboarder.OnboarderActivity;
 import com.chyrta.onboarder.OnboarderPage;
-import com.sky.quotebook.R;
+import com.samirk433.quotebook.R;
 
 import java.util.ArrayList;
 import java.util.List;

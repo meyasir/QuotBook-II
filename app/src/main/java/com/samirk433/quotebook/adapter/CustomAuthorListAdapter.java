@@ -1,4 +1,4 @@
-package com.sky.quotebook.adapter;
+package com.samirk433.quotebook.adapter;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.sky.quotebook.R;
+import com.samirk433.quotebook.R;
+
 
 public class CustomAuthorListAdapter extends RecyclerView.Adapter<CustomAuthorListAdapter.FragmentCustomViewHolder> {
 
