@@ -8,13 +8,43 @@
     <color name="colorBlack">#000</color>
     <color name="colorBlackOverlay">#dd000000</color>
 
-
-
-
     <color name="colorBackRed">#D32F2F</color>
     <color name="colorBackGrey">#757575</color>
     <color name="colorBackBlue">#0288D1</color>
     <color name="colorBackGreen">#2E7D32</color>
     <color name="colorBackPurple">#7B1FA2</color>
     <color name="colorBackLime">#CDDC39</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#999999</color>
+    <color name="DarkNight">#0b0606</color>
+    <color name="RedLight">#df6060</color>
+    <color name="activity_background">#EEEEEE</color>
+
+    <!-- Material Design Color - Color palette -->
+
+    <!-- Google Logo Color -->
+    <color name="google_blue">#4285F4</color>
+    <color name="google_green">#34A853</color>
+    <color name="google_yellow">#FBBC05</color>
+    <color name="google_red">#EA4335</color>
+
+    <!-- Google Apps Color -->
+
+    <color name="text_color_item_view">#4e4d4d</color>
+
+    <!--  Some colors for Notifications in settings, listed under -->
+
+    <color name="textColorHeader">#1d057e</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#EA4335</color>
+
+    <!--switch color-->
+
+    <color name="thumb_active">#ea4330</color>
+    <color name="track_active">#ede9b4b4</color>
+
+    <color name="thumb_inactive">#f2f0f0</color>
+    <color name="track_inactive">#ccaeaaaa</color>
 </resources>
