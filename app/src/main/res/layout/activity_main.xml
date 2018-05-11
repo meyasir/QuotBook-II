@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sky.quotebook.activity.MainActivity">
+    tools:context="com.samirk433.quotebook.activity.IntroDemoActivity">
 
     <include layout="@layout/toolbar_layout" />
 
@@ -37,6 +37,9 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
+<com.github.florent37.parallax.ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/main_container"
@@ -45,6 +48,8 @@
         android:layout_above="@+id/bottom_navigation">
 
     </FrameLayout>
+</com.github.florent37.parallax.ScrollView>
+
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"

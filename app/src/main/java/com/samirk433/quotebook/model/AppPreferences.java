@@ -1,4 +1,4 @@
-package com.sky.quotebook.model;
+package com.samirk433.quotebook.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;

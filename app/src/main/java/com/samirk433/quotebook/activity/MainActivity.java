@@ -1,5 +1,4 @@
-package com.sky.quotebook.activity;
-
+package com.samirk433.quotebook.activity;
 import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.Context;
@@ -40,14 +39,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.sky.quotebook.fragment.GeneralDialogFragment;
-import com.sky.quotebook.fragment.NoteFragment;
-import com.sky.quotebook.R;
-import com.sky.quotebook.adapter.RecyclerViewAdapter;
-import com.sky.quotebook.fragment.AuthorListFragment;
-import com.sky.quotebook.fragment.CategoryListFragment;
-import com.sky.quotebook.model.AppPreferences;
-import com.sky.quotebook.view.ItemTouchHelperCallback;
+import com.samirk433.quotebook.fragment.GeneralDialogFragment;
+import com.samirk433.quotebook.fragment.NoteFragment;
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.adapter.RecyclerViewAdapter;
+import com.samirk433.quotebook.fragment.AuthorListFragment;
+import com.samirk433.quotebook.fragment.CategoryListFragment;
+import com.samirk433.quotebook.model.AppPreferences;
+import com.samirk433.quotebook.view.ItemTouchHelperCallback;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,14 @@
-package com.sky.quotebook.activity;
+package com.samirk433.quotebook.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.sky.quotebook.R;
-import com.sky.quotebook.model.LocalData;
-import com.sky.quotebook.model.NotificationScheduler;
-import com.sky.quotebook.receiver.AlarmReceiver;
-import com.sky.quotebook.util.AppUtils;
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.model.LocalData;
+import com.samirk433.quotebook.model.NotificationScheduler;
+import com.samirk433.quotebook.receiver.AlarmReceiver;
+import com.samirk433.quotebook.util.AppUtils;
 
 import android.annotation.TargetApi;
 import android.app.TimePickerDialog;
@@ -107,6 +107,8 @@ public class SettingsActivity extends AppCompatActivity {
         ll_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, AuthorDetailsActivity.class);
+                startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "Terms and conditions-2", Toast.LENGTH_SHORT).show();
             }

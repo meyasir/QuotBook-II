@@ -1,4 +1,4 @@
-package com.sky.quotebook.adapter;
+package com.samirk433.quotebook.adapter;
 
 import android.content.Context;
 import android.support.design.widget.Snackbar;
@@ -11,8 +11,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 
-import com.sky.quotebook.R;
-import com.sky.quotebook.interfaces.onMoveAndSwipedListener;
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.interfaces.onMoveAndSwipedListener;
 
 import java.util.ArrayList;
 import java.util.Collections;

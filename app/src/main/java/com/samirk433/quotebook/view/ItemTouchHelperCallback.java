@@ -1,10 +1,10 @@
-package com.sky.quotebook.view;
+package com.samirk433.quotebook.view;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.sky.quotebook.interfaces.onMoveAndSwipedListener;
+import com.samirk433.quotebook.interfaces.onMoveAndSwipedListener;
 
 /**
  * Support few Motion transition i-e Swapping Left or right (to delete), Moving up or down(to place items of rec-view)

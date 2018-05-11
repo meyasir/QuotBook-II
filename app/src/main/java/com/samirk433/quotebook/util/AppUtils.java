@@ -1,10 +1,10 @@
-package com.sky.quotebook.util;
+package com.samirk433.quotebook.util;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.sky.quotebook.R;
+import com.samirk433.quotebook.R;
 
 public class AppUtils {
 

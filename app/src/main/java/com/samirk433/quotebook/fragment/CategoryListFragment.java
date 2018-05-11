@@ -1,4 +1,4 @@
-package com.sky.quotebook.fragment;
+package com.samirk433.quotebook.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sky.quotebook.R;
-import com.sky.quotebook.adapter.CustomCategoryListAdapter;
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.adapter.CustomCategoryListAdapter;
 
 public class CategoryListFragment extends
         Fragment {

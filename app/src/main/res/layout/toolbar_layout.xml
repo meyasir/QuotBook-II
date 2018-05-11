@@ -14,8 +14,9 @@
         android:layout_height="?actionBarSize"
         android:layout_gravity="center_vertical"
         android:background="?attr/colorPrimary"
+        iosched:title="Settings testing"
         android:gravity="center_vertical"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/Theme.AppCompat.NoActionBar"
-        iosched:titleTextColor="@color/white" />
+        iosched:titleTextColor="@color/white"/>
 </android.support.design.widget.AppBarLayout>

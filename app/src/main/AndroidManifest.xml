@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sky.quotebook">
+    package="com.samirk433.quotebook">
 
     <!-- permission required to automatically restart a repeating alarm if the user reboots the device -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -28,10 +28,9 @@
         <activity
             android:name=".activity.SettingsActivity"
             android:label="settings"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".activity.MainActivity"/>
-
-        <activity android:name=".activity.IntroDemoActivity"></activity>
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.IntroDemoActivity" />
 
         <!-- Register the Alarm Receiver -->
         <receiver
@@ -41,6 +40,9 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activity.Settings2Activity" />
+        <activity android:name=".activity.AuthorDetailsActivity"></activity>
     </application>
 
 </manifest>
