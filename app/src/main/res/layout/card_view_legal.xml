@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:id="@+id/card_view_settings_legal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/card_view_settings_alarm_reminder"
+    android:layout_marginLeft="@dimen/card_margin_horizontal"
+    android:layout_marginRight="@dimen/card_margin_horizontal"
+    android:layout_marginTop="@dimen/card_margin_vertical"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:translationZ="6dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout style="@style/settings_item_layout">
+
+        <TextView
+            android:id="@+id/tv_agree_header"
+            style="@style/settings_header"
+            android:paddingBottom="@dimen/items_inbetween_space"
+            android:text="Agreement"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/items_inbetween_space"
+            android:paddingTop="@dimen/items_inbetween_space">
+
+            <TextView
+                android:id="@+id/tv_agree_terms_label"
+                style="@style/settings_sub_header"
+                android:text="Terms &amp; conditions" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/items_inbetween_space"
+            android:paddingTop="@dimen/items_inbetween_space">
+
+            <TextView
+                android:id="@+id/tv_agree_privacy_label"
+                style="@style/settings_sub_header"
+                android:text="Privacy policy" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

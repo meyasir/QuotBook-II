@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_settings_about_us"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/card_view_settings_legal"
+    android:layout_marginLeft="@dimen/card_margin_horizontal"
+    android:layout_marginRight="@dimen/card_margin_horizontal"
+    android:layout_marginTop="@dimen/card_margin_vertical"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:translationZ="6dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <LinearLayout style="@style/settings_item_layout">
+
+            <TextView
+                android:id="@+id/tv_card_about_1_1"
+                style="@style/settings_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_card1_message"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_about_version"
+                style="@style/settings_sub_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_card_about_1_1"
+                android:layout_marginLeft="@dimen/button_bottom_margin"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="@dimen/text_margin_small"
+                android:text="Android team" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
