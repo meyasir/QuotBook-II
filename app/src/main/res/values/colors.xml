@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#bf2b06</color>
-    <color name="colorPrimaryDark">#8c1b00</color>
-    <color name="colorAccent">#010578</color>
+    <color name="colorPrimary">#E53935</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBlackOverlay">#dd000000</color>
+
+    <color name="colorBackRed">#D32F2F</color>
+    <color name="colorBackGrey">#757575</color>
+    <color name="colorBackBlue">#0288D1</color>
+    <color name="colorBackGreen">#2E7D32</color>
+    <color name="colorBackPurple">#7B1FA2</color>
+    <color name="colorBackLime">#CDDC39</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
@@ -16,8 +27,11 @@
     <!-- Google Logo Color -->
     <color name="google_blue">#4285F4</color>
     <color name="google_green">#34A853</color>
+    <color name="google_green_touch">#5c7c38</color>
     <color name="google_yellow">#FBBC05</color>
     <color name="google_red">#EA4335</color>
+    <color name="google_cyan">#448e8f</color>
+    <color name="google_green_cyan">#409466</color>
 
     <!-- Google Apps Color -->
 
@@ -36,5 +50,4 @@
 
     <color name="thumb_inactive">#f2f0f0</color>
     <color name="track_inactive">#ccaeaaaa</color>
-
 </resources>

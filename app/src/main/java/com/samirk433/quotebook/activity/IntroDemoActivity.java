@@ -17,6 +17,7 @@ public class IntroDemoActivity extends OnboarderActivity {
 
     List<OnboarderPage> onboarderPages;
     String finishButton;
+    String skipButton;
     int titleTextSize;
     int descriptionTextSize;
     boolean multilineDescriptionCentered;
@@ -27,42 +28,81 @@ public class IntroDemoActivity extends OnboarderActivity {
         onboarderPages = new ArrayList<OnboarderPage>();
 
         // Create your first page
-        OnboarderPage onboarderPage1 = new OnboarderPage("Title 1", "Description 1");
-        OnboarderPage onboarderPage2 = new OnboarderPage(R.string.app_name, R.string.app_message, R.drawable.googleg_standard_color_18);
-        OnboarderPage onboarderPage3 = new OnboarderPage("third", "Description");
+        OnboarderPage onboarderPage1 = new OnboarderPage("App introduction!!", "This app provides all the best quotes from your favorite authors\n  \n The largest quote-hub on play store", R.drawable.ic_hand_wave_skin);
+        OnboarderPage onboarderPage2 = new OnboarderPage("Reminder Alarm", "Anyway, this is to remind you there's always a recommended quote for you, whenever you're free", R.drawable.ic_reminder_alarm_green_1);
+        OnboarderPage onboarderPage3 = new OnboarderPage("Favorite author", "You'll get all of the quotes from your favorite author(s)", R.drawable.ic_heart_white);
+        OnboarderPage onboarderPage4 = new OnboarderPage("Customize Everything!!", "The app lets you change the 'Background picture, Color, Theme, Font size, and Font family' of your best quote and share it with Friends&Family", R.drawable.ic_customize_everything_multi_color);
+        OnboarderPage onboarderPage5 = new OnboarderPage("Save Quotes", "You can save your favorite Quote", R.drawable.ic_save_green_white);
         // You can define title and description colors (by default white)
-        onboarderPage1.setTitleColor(R.color.black);
-        onboarderPage1.setDescriptionColor(R.color.white);
-        onboarderPage3.setTitleColor(R.color.black);
-        onboarderPage3.setDescriptionTextSize(34);
-        onboarderPage3.setImageResourceId(R.drawable.ic_person_red_24dp);
-        onboarderPage3.setDescriptionColor(R.color.google_green);
-        onboarderPage3.setBackgroundColor(R.color.google_yellow);
+
+        //page 1 title & description color & size
+        onboarderPage1.setTitleColor(R.color.white);
+        onboarderPage1.setDescriptionColor(R.color.colorWhite);
+        onboarderPage1.setTitleTextSize(30);
+        onboarderPage1.setDescriptionTextSize(16);
+
+        //page 2 title & description color & size
+        onboarderPage2.setTitleColor(R.color.white);
+        onboarderPage2.setDescriptionColor(R.color.colorWhite);
+        onboarderPage2.setTitleTextSize(28);
+        onboarderPage2.setDescriptionTextSize(18);
+
+        //page 3 title & description color & size
+        onboarderPage3.setTitleColor(R.color.white);
+        onboarderPage3.setDescriptionColor(R.color.colorWhite);
+        onboarderPage3.setTitleTextSize(25);
+        onboarderPage3.setDescriptionTextSize(18);
+
+        //page 4 title & description color & size
+        onboarderPage4.setTitleColor(R.color.white);
+        onboarderPage4.setDescriptionColor(R.color.colorWhite);
+        onboarderPage4.setTitleTextSize(23);
+        onboarderPage4.setDescriptionTextSize(16);
+
+        //page 5 title & description color & size
+        onboarderPage5.setTitleColor(R.color.white);
+        onboarderPage5.setDescriptionColor(R.color.colorWhite);
+        onboarderPage5.setTitleTextSize(23);
+        onboarderPage5.setDescriptionTextSize(18);
+
 
         // Don't forget to set background color for your page
         onboarderPage1.setBackgroundColor(R.color.google_blue);
+
+        onboarderPage2.setBackgroundColor(R.color.google_green_cyan);
+
+        onboarderPage3.setBackgroundColor(R.color.google_green_touch);
+
+        onboarderPage4.setBackgroundColor(R.color.google_cyan);
+
+        onboarderPage5.setBackgroundColor(R.color.RedLight);
 
         // Add your pages to the list
         onboarderPages.add(onboarderPage1);
         onboarderPages.add(onboarderPage2);
         onboarderPages.add(onboarderPage3);
+        onboarderPages.add(onboarderPage4);
+        onboarderPages.add(onboarderPage5);
 
         // And pass your pages to 'setOnboardPagesReady' method
         setOnboardPagesReady(onboarderPages);
 
-
+        //general attributes for all pages
         setActiveIndicatorColor(android.R.color.white);
-        setInactiveIndicatorColor(android.R.color.holo_green_light);
+        setInactiveIndicatorColor(android.R.color.holo_red_light);
         shouldDarkenButtonsLayout(true);
         setDividerColor(Color.WHITE);
-        setDividerHeight(2);
-        setDividerVisibility(View.GONE);
+        setDividerHeight(3);
+        setDividerVisibility(View.VISIBLE);
         shouldUseFloatingActionButton(true);
         setSkipButtonTitle("Skip");
-        setFinishButton("Finish");
-        setSkipButtonHidden();
-        setTitleTextSize(12);
-        setDescriptionTextSize(12);
+        setFinishButton("got it");
+        setFinishButtonTitle("got it");
+        setSkipButton("Skip");
+        //setSkipButtonHidden();
+        //setTitleTextSize(18);
+        //setDescriptionTextSize(13);
+
         setMultilineDescriptionCentered(true);
     }
 
@@ -99,13 +139,17 @@ public class IntroDemoActivity extends OnboarderActivity {
         this.finishButton = finishButton;
     }
 
-    public void setTitleTextSize(int titleTextSize) {
+    public void setSkipButton(String skipButton) {
+        this.skipButton = skipButton;
+    }
+
+   /* public void setTitleTextSize(int titleTextSize) {
         this.titleTextSize = titleTextSize;
     }
 
     public void setDescriptionTextSize(int descriptionTextSize) {
         this.descriptionTextSize = descriptionTextSize;
-    }
+    }*/
 
     public void setMultilineDescriptionCentered(boolean multilineDescriptionCentered) {
         this.multilineDescriptionCentered = multilineDescriptionCentered;

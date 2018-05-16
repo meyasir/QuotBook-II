@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.samirk433.quotebook.R;
 
 public class CustomCategoryListAdapter extends RecyclerView.Adapter<CustomCategoryListAdapter.CustomViewHolderCat> {

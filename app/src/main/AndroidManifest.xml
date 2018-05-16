@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.samirk433.quotebook">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <!-- permission required to automatically restart a repeating alarm if the user reboots the device -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,7 +20,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:label="@string/app_name"
+            android:label="Main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".QuoteActivity" />
         <activity
             android:name=".activity.SettingsActivity"
             android:label="settings"
@@ -42,7 +46,7 @@
         </receiver>
 
         <activity android:name=".activity.Settings2Activity" />
-        <activity android:name=".activity.AuthorDetailsActivity"></activity>
+        <activity android:name=".activity.AuthorDetailsActivity" />
     </application>
 
 </manifest>

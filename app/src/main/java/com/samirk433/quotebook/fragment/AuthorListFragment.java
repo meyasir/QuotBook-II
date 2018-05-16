@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kogitune.activity_transition.fragment.ExitFragmentTransition;
+import com.kogitune.activity_transition.fragment.FragmentTransition;
 import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.adapter.CustomAuthorListAdapter;
 
@@ -33,6 +35,7 @@ public class AuthorListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_author_list, null);
 
+
         String[] data = {"Martin Luther King Jr.", "Lao-tzu", "Fran Lebowitz ", "C. S. Lewis ", "Abraham Lincoln ",
                 "Groucho Marx ", "W. Somerset Maugham", "H. L. Mencken", "Mother Teresa", "Friedrich Nietzsche", "Auth_11"
                 , "Auth_12", "Auth_13", "Auth_14", "Auth_15", "Auth_16", "Auth_17", "Auth_18"};
@@ -40,7 +43,7 @@ public class AuthorListFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rec_fragment_try_test_list);
 
         //animation applied
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+       // mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -55,4 +58,5 @@ public class AuthorListFragment extends Fragment {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         return view;
     }
+
 }

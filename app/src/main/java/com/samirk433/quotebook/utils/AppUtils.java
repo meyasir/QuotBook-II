@@ -1,4 +1,4 @@
-package com.samirk433.quotebook.util;
+package com.samirk433.quotebook.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

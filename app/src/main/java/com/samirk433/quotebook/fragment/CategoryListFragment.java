@@ -18,7 +18,7 @@ public class CategoryListFragment extends
 
     LinearLayoutManager linearLayoutManager;
     RecyclerView mRecyclerView;
-    CustomCategoryListAdapter customCategoryListAdapter;
+    com.samirk433.quotebook.adapter.CustomCategoryListAdapter customCategoryListAdapter;
 
 
     public CategoryListFragment() {
@@ -43,7 +43,7 @@ public class CategoryListFragment extends
         linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        customCategoryListAdapter = new CustomCategoryListAdapter(data);
+        customCategoryListAdapter = new com.samirk433.quotebook.adapter.CustomCategoryListAdapter(data);
         mRecyclerView.setAdapter(customCategoryListAdapter);
 
         getActivity().setTitle("Team B");

@@ -1,4 +1,4 @@
-package com.sky.quotebook;
+package com.quotebook.samirk433.quotebook;
 
 import org.junit.Test;
 

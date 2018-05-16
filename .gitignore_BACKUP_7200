@@ -1,0 +1,23 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+<<<<<<< HEAD
+/.idea/vcs
+=======
+>>>>>>> cf5c4a13343c12bd8576ad361b4673cb11222f5d
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+<<<<<<< HEAD
+
+
+#data directories
+/src/main/assets
+/src/main/drawable
+/src/main/drawable-v24
+
+=======
+>>>>>>> cf5c4a13343c12bd8576ad361b4673cb11222f5d

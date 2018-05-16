@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuotBookApll(Main).iml" filepath="$PROJECT_DIR$/QuotBookApll(Main).iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\QuotBookApll(Main)\app.iml" filepath="E:\QuotBookApll(Main)\app.iml" />
+      <module fileurl="file://E:\QuotBookApll(Main)\app\app-app.iml" filepath="E:\QuotBookApll(Main)\app\app-app.iml" />
     </modules>
   </component>
 </project>

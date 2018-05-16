@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/card_view_item_recycler_view"
     android:layout_width="match_parent"
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/share_view_round_margin"
-            android:src="@drawable/ic_arrow_right_grey_24dp" />
+            app:srcCompat="@drawable/ic_arrow_right_grey_24dp" />
     </LinearLayout>
 
 </LinearLayout>

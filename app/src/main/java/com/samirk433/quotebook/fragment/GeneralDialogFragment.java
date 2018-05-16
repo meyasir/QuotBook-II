@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
+
+import com.samirk433.quotebook.R;
 
 /**
  * created am app level dialog ( work in Fragment as well in activities)to share quotes and app
@@ -17,6 +20,7 @@ public class GeneralDialogFragment extends BaseDialogFragment<GeneralDialogFragm
         void onOkClicked(GeneralDialogFragment dialog);
 
         //public void onCancelClicked(GeneralDialogFragment dialog);
+        void onCancelClicked(GeneralDialogFragment dialog);
 
     }
 
@@ -35,9 +39,11 @@ public class GeneralDialogFragment extends BaseDialogFragment<GeneralDialogFragm
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         return new AlertDialog.Builder(getActivity())
+                .setIcon(R.drawable.ic_logo_square_red)
                 .setTitle(getArguments().getString("share "))
                 .setMessage(getArguments().getString("message"))
                 .setCancelable(false)
+                .setMessage("\n Click share to continue or cancel \n  this action")
                 .setPositiveButton("share",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
@@ -46,14 +52,15 @@ public class GeneralDialogFragment extends BaseDialogFragment<GeneralDialogFragm
                             }
                         }
                 )
-                /*.setNegativeButton("Cancel",
+                .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 // negative button clicked
+                                Toast.makeText(getContext(), "Sharing cancelled", Toast.LENGTH_SHORT).show();
                                 getActivityInstance().onCancelClicked(GeneralDialogFragment.this);
                             }
                         }
-                )*/
+                )
                 .create();
     }
 

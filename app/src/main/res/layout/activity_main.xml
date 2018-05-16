@@ -17,7 +17,6 @@
         android:orientation="vertical">
 
 
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_1"
             android:layout_width="match_parent"
@@ -28,7 +27,11 @@
             android:paddingStart="@dimen/zero_horizontal_margin_big_activity" />
 
 
-
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_square_red"
+            android:id="@+id/yasir"/>
         <TextView
             android:id="@+id/launchCount"
             android:layout_width="wrap_content"

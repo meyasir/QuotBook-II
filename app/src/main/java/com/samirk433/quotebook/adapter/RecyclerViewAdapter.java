@@ -10,7 +10,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
-
 import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.interfaces.onMoveAndSwipedListener;
 

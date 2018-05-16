@@ -3,13 +3,6 @@ package com.samirk433.quotebook.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.samirk433.quotebook.R;
-import com.samirk433.quotebook.model.LocalData;
-import com.samirk433.quotebook.model.NotificationScheduler;
-import com.samirk433.quotebook.receiver.AlarmReceiver;
-import com.samirk433.quotebook.util.AppUtils;
-
 import android.annotation.TargetApi;
 import android.app.TimePickerDialog;
 import android.content.ClipboardManager;
@@ -28,6 +21,15 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.kogitune.activity_transition.ActivityTransition;
+import com.kogitune.activity_transition.ExitActivityTransition;
+import com.samirk433.quotebook.R;
+import com.samirk433.quotebook.model.LocalData;
+import com.samirk433.quotebook.model.NotificationScheduler;
+import com.samirk433.quotebook.receiver.AlarmReceiver;
+import com.samirk433.quotebook.utils.AppUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -41,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
     int hour, min;
     ClipboardManager myClipboard;
     LinearLayout ll_help;
+    private ExitActivityTransition exitTransition;
 
 
     @Override
@@ -48,12 +51,17 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        //transition between activities, Pre-Lollipop Animations
+        ActivityTransition.with(getIntent()).to(findViewById(R.id.iv_timer)).start(savedInstanceState);
+        //transition between activities, Pre-Lollipop Animations
+        exitTransition = ActivityTransition.with(getIntent()).to(findViewById(R.id.iv_timer)).start(savedInstanceState);
+
         //toolbar settings
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("settings");
 
-        //display back button
+        //display back button on actionBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setGravity(toolbar.TEXT_ALIGNMENT_GRAVITY);
 
@@ -107,7 +115,7 @@ public class SettingsActivity extends AppCompatActivity {
         ll_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SettingsActivity.this, AuthorDetailsActivity.class);
+                Intent intent = new Intent(SettingsActivity.this,  AuthorDetailsActivity.class);
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "Terms and conditions-2", Toast.LENGTH_SHORT).show();
@@ -128,6 +136,12 @@ public class SettingsActivity extends AppCompatActivity {
         initView();
     }
 
+//back button presses
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 
     private void initView() {
 //first 3 lines for card
@@ -204,5 +218,11 @@ public class SettingsActivity extends AppCompatActivity {
             //noinspection deprecation
             return getResources().getConfiguration().locale;
         }
+    }
+
+    //Exit, Pre-Lollipop Animations
+    @Override
+    public void onBackPressed() {
+        exitTransition.exit(this);
     }
 }

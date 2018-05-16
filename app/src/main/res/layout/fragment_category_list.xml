@@ -13,23 +13,23 @@
 
         <include layout="@layout/toolbar_layout" />
 
-        <com.github.florent37.parallax.ParallaxView
+      <!--  <com.github.florent37.parallax.ParallaxView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:parallaxVertical="0.3">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_yasir" />
 
-        </com.github.florent37.parallax.ParallaxView>
+        </com.github.florent37.parallax.ParallaxView>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="54dp"
             android:orientation="vertical">
 
             <com.github.florent37.parallax.ParallaxView
