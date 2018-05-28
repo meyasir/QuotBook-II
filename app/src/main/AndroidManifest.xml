@@ -45,7 +45,6 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.Settings2Activity" />
         <activity android:name=".activity.AuthorDetailsActivity" />
     </application>
 

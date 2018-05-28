@@ -60,5 +60,8 @@ android {
 
         //airbnb
         compile 'com.airbnb.android:lottie:2.2.0'
+
+        //material ripple
+        compile 'com.balysv:material-ripple:1.0.2'
     }
 }

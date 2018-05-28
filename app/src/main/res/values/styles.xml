@@ -41,7 +41,7 @@
     </style>
 
     <style name="settings_header">
-        <item name="android:textColor">@color/textColorHeader</item>
+        <item name="android:textColor">@color/colorBackGrey</item>
         <item name="android:textSize">@dimen/large_text</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -63,5 +63,14 @@
     <style name="switch_theme">
         <item name="thumbTint">@color/switch_color</item>
         <item name="trackTint">@color/track_color</item>
+    </style>
+
+    //samir styles, just name given by him, i define here in details
+    <style name="tvSettingsHeader">
+        <item name="android:textColor">@color/DarkNight</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/large_text</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

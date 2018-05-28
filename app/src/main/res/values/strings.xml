@@ -107,7 +107,7 @@
 
     <string name="sett_reminder_header">Set Reminder</string>
     <string name="sett_reminder_label">Remind Me</string>
-    <string name="sett_reminder_desc">We will remind you with the recommended Quotes on your chosen time.</string>
+    <string name="sett_reminder_desc">turn on/off notifications</string>
     <string name="sett_reminder_time_label">Set Reminder Time</string>
     <string name="sett_reminder_time_content">9 : 00 PM</string>
     <string name="bio_of_category">categories</string>

@@ -1,8 +1,11 @@
 package com.samirk433.quotebook.activity;
 
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+
 import android.annotation.TargetApi;
 import android.app.TimePickerDialog;
 import android.content.ClipboardManager;
@@ -20,10 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.kogitune.activity_transition.ActivityTransition;
-import com.kogitune.activity_transition.ExitActivityTransition;
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.samirk433.quotebook.R;
 import com.samirk433.quotebook.model.LocalData;
 import com.samirk433.quotebook.model.NotificationScheduler;
@@ -34,137 +35,93 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class SettingsActivity extends AppCompatActivity {
-    String TAG = "RemindMe";
-    LocalData localData;
-    SwitchCompat reminderSwitch;
-    TextView tvTime;
-    LinearLayout ll_set_time, ll_terms;
-    int hour, min;
-    ClipboardManager myClipboard;
-    LinearLayout ll_help;
-    private ExitActivityTransition exitTransition;
+public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = SettingsActivity.class.getSimpleName();
 
+    private MaterialRippleLayout mLayoutGoogleFonts, mLayoutUnsplash;
+    private LinearLayout mLayoutTime, mLayoutHelp;
+    private SwitchCompat mSwitchNotification;
+
+    private LocalData localData;
+    private TextView mTvTime;
+    private int mHour, mMin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        //transition between activities, Pre-Lollipop Animations
-        ActivityTransition.with(getIntent()).to(findViewById(R.id.iv_timer)).start(savedInstanceState);
-        //transition between activities, Pre-Lollipop Animations
-        exitTransition = ActivityTransition.with(getIntent()).to(findViewById(R.id.iv_timer)).start(savedInstanceState);
+        initView();
 
-        //toolbar settings
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        localData = new LocalData(getApplicationContext());
+        mHour = localData.get_hour();
+        mMin = localData.get_min();
+
+        mTvTime.setText(getFormatedTime(mHour, mMin));
+        mSwitchNotification.setChecked(localData.getReminderStatus());
+
+        if (!localData.getReminderStatus())
+            mLayoutTime.setAlpha(0.4f);
+
+    }
+
+
+    private void initView() {
+        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("settings");
-
-        //display back button on actionBar
+        getSupportActionBar().setTitle("Settings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setGravity(toolbar.TEXT_ALIGNMENT_GRAVITY);
 
-        localData = new LocalData(getApplicationContext());
 
-        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        mLayoutUnsplash = findViewById(R.id.rippleLayoutUnsplashLicence);
+        mLayoutGoogleFonts = findViewById(R.id.rippleLayoutGoogleFonts);
+        mLayoutHelp = findViewById(R.id.layout_help);
+        mLayoutTime = findViewById(R.id.layout_time);
+        mTvTime = findViewById(R.id.tv_notification_time);
+        mSwitchNotification = findViewById(R.id.timerSwitch);
 
-        ll_set_time = (LinearLayout) findViewById(R.id.ll_set_time);
-        ll_terms = (LinearLayout) findViewById(R.id.ll_terms);
-        ll_help = (LinearLayout) findViewById(R.id.ll_help);
-
-        tvTime = (TextView) findViewById(R.id.tv_reminder_time_desc);
-
-        reminderSwitch = (SwitchCompat) findViewById(R.id.timerSwitch);
-
-        hour = localData.get_hour();
-        min = localData.get_min();
-
-        tvTime.setText(getFormatedTime(hour, min));
-        reminderSwitch.setChecked(localData.getReminderStatus());
-
-        if (!localData.getReminderStatus())
-            ll_set_time.setAlpha(0.4f);
-
-        reminderSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mLayoutGoogleFonts.setOnClickListener(this);
+        mLayoutUnsplash.setOnClickListener(this);
+        mLayoutHelp.setOnClickListener(this);
+        mLayoutTime.setOnClickListener(this);
+        mSwitchNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 localData.setReminderStatus(isChecked);
                 if (isChecked) {
                     Log.d(TAG, "onCheckedChanged: true");
                     NotificationScheduler.setReminder(SettingsActivity.this, AlarmReceiver.class, localData.get_hour(), localData.get_min());
-                    ll_set_time.setAlpha(1f);
+                    mLayoutTime.setAlpha(1f);
                 } else {
                     Log.d(TAG, "onCheckedChanged: false");
                     NotificationScheduler.cancelReminder(SettingsActivity.this, AlarmReceiver.class);
-                    ll_set_time.setAlpha(0.4f);
+                    mLayoutTime.setAlpha(0.4f);
                 }
-
             }
         });
 
-        ll_set_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (localData.getReminderStatus())
-                    showTimePickerDialog(localData.get_hour(), localData.get_min());
-            }
-
-        });
-
-        ll_terms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SettingsActivity.this,  AuthorDetailsActivity.class);
-                startActivity(intent);
-
-                Toast.makeText(getApplicationContext(), "Terms and conditions-2", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ll_help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                    Intent intent = new Intent(SettingsActivity.this, IntroDemoActivity.class);
-                    startActivity(intent);
-            }
-
-        });
-
-        //to add the card textView with animation
-        initView();
-    }
-
-//back button presses
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
-
-    private void initView() {
-//first 3 lines for card
+        //scroll animation
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_about_card_show);
-        ScrollView scroll_about = findViewById(R.id.scroll_settings);
-        scroll_about.startAnimation(animation);
+        ScrollView scrollView = findViewById(R.id.scroll_settings);
+        scrollView.startAnimation(animation);
 
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
         alphaAnimation.setDuration(300);
-        alphaAnimation.setStartOffset(600);
-        TextView tv_about_version = findViewById(R.id.tv_about_version);
-        tv_about_version.setText(AppUtils.getVersionName(this));
-        tv_about_version.startAnimation(alphaAnimation);
+        alphaAnimation.setStartOffset(500);
 
-        TextView tv_reminder_label = findViewById(R.id.tv_reminder_label);
-        tv_reminder_label.startAnimation(alphaAnimation);
-        TextView tv_reminder_time_label = findViewById(R.id.tv_reminder_time_label);
-        tv_reminder_time_label.startAnimation(alphaAnimation);
-        TextView tv_agree_terms_label = findViewById(R.id.tv_agree_terms_label);
-        tv_agree_terms_label.startAnimation(alphaAnimation);
-        TextView tv_agree_privacy_label = findViewById(R.id.tv_agree_privacy_label);
-        tv_agree_privacy_label.startAnimation(alphaAnimation);
+        findViewById(R.id.tv_daily_notification).startAnimation(alphaAnimation);
+        findViewById(R.id.tv_daily_notification_desc).startAnimation(alphaAnimation);
+        findViewById(R.id.tv_help).startAnimation(alphaAnimation);
+        findViewById(R.id.tv_unsplash).startAnimation(alphaAnimation);
+        findViewById(R.id.tv_google_fonts).startAnimation(alphaAnimation);
 
+        mTvTime = findViewById(R.id.tv_notification_time);
+        mTvTime.setAnimation(alphaAnimation);
+
+        TextView tvVersion = findViewById(R.id.tv_version);
+        tvVersion.setText(AppUtils.getVersionName(this));
+        tvVersion.setAnimation(alphaAnimation);
     }
 
     private void showTimePickerDialog(int h, int m) {
@@ -176,11 +133,11 @@ public class SettingsActivity extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hour, int min) {
-                        Log.d(TAG, "onTimeSet: hour " + hour);
-                        Log.d(TAG, "onTimeSet: min " + min);
+                        Log.d(TAG, "onTimeSet: mHour " + hour);
+                        Log.d(TAG, "onTimeSet: mMin " + min);
                         localData.set_hour(hour);
                         localData.set_min(min);
-                        tvTime.setText(getFormatedTime(hour, min));
+                        mTvTime.setText(getFormatedTime(hour, min));
                         NotificationScheduler.setReminder(SettingsActivity.this, AlarmReceiver.class, localData.get_hour(), localData.get_min());
 
                     }
@@ -199,30 +156,34 @@ public class SettingsActivity extends AppCompatActivity {
         String newDateString = "";
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT, getCurrentLocale());
+            SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
             Date d = sdf.parse(oldDateString);
             sdf.applyPattern(NEW_FORMAT);
             newDateString = sdf.format(d);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return newDateString;
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
-    public Locale getCurrentLocale() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return getResources().getConfiguration().getLocales().get(0);
-        } else {
-            //noinspection deprecation
-            return getResources().getConfiguration().locale;
-        }
-    }
 
-    //Exit, Pre-Lollipop Animations
     @Override
-    public void onBackPressed() {
-        exitTransition.exit(this);
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.layout_help:
+                Intent intent = new Intent(SettingsActivity.this, IntroDemoActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.layout_time:
+                if (localData.getReminderStatus())
+                    showTimePickerDialog(localData.get_hour(), localData.get_min());
+                break;
+
+            case R.id.rippleLayoutGoogleFonts:
+                break;
+            case R.id.rippleLayoutUnsplashLicence:
+                break;
+        }
     }
 }

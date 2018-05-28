@@ -1,341 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar_layout" />
 
-    <com.github.florent37.parallax.ScrollView
+    <ScrollView
         android:id="@+id/scroll_settings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/card_view_settings_alarm_reminder"
+<!--
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/card_margin_horizontal"
-                android:layout_marginRight="@dimen/card_margin_horizontal"
-                android:layout_marginTop="60dp"
+
+
+                android:layout_marginLeft="@dimen/card_recycler_corner_radius"
+                android:layout_marginRight="@dimen/card_recycler_corner_radius"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackground"
                 android:translationZ="6dp"
                 card_view:cardCornerRadius="4dp"
-                card_view:cardElevation="4dp">
+                card_view:cardElevation="4dp">-->
 
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    xmlns:tools="http://schemas.android.com/tools"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    style="@style/settings_header"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="General Settings" />
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/llReminder"
-                        style="@style/settings_item_layout"
-                        android:tag="parallax=0.3">
-
-                        <TextView
-                            android:id="@+id/tv_reminder_header"
-                            style="@style/settings_header"
-                            android:text="@string/sett_reminder_header"
-                            android:textStyle="bold" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/activity_vertical_margin">
-
-                            <TextView
-                                android:id="@+id/tv_reminder_label"
-                                style="@style/settings_sub_header"
-                                android:text="@string/sett_reminder_label" />
-
-                            <android.support.v7.widget.SwitchCompat
-                                android:id="@+id/timerSwitch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:checked="false"
-                                android:gravity="center_vertical"
-                                android:theme="@style/switch_theme" />
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:id="@+id/tv_reminder_desc"
-                            style="@style/settings_details"
-                            android:paddingBottom="@dimen/items_inbetween_space"
-                            android:paddingTop="@dimen/items_top_padding"
-                            android:text="@string/sett_reminder_desc" />
-
-                        <LinearLayout
-                            android:id="@+id/ll_set_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="@dimen/items_inbetween_space">
-
-                                <TextView
-                                    android:id="@+id/tv_reminder_time_label"
-                                    style="@style/settings_sub_header"
-                                    android:text="@string/sett_reminder_time_label" />
-
-                                <ImageView
-                                    android:id="@+id/iv_timer"
-                                    android:layout_width="@dimen/timer_icon"
-                                    android:layout_height="@dimen/timer_icon"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:src="@drawable/ic_watch_history_red_48dp" />
-
-                            </RelativeLayout>
-
-                            <TextView
-                                android:id="@+id/tv_reminder_time_desc"
-                                style="@style/settings_details"
-                                android:paddingBottom="@dimen/items_inbetween_space"
-                                android:paddingTop="@dimen/items_top_padding"
-                                android:text="@string/sett_reminder_time_content" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <!-- <View
-                         android:layout_width="match_parent"
-                         android:layout_height="0.5dp"
-                         android:background="@color/textColorSecondary"
-
-                   <LinearLayout style="@style/settings_item_layout">
-
-                         <TextView
-                             android:id="@+id/tv_agree_header"
-                             style="@style/settings_header"
-                             android:paddingBottom="@dimen/items_inbetween_space"
-                             android:text="Agreement" />
-
-                         <LinearLayout
-                             android:id="@+id/ll_terms"
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:paddingBottom="@dimen/items_inbetween_space"
-                             android:paddingTop="@dimen/items_inbetween_space">
-
-                             <TextView
-                                 android:id="@+id/tv_agree_terms_label"
-                                 style="@style/settings_sub_header"
-                                 android:text="Terms &amp; conditions" />
-
-                         </LinearLayout>
-
-                         <LinearLayout
-                             android:id="@+id/ll_privacy"
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:paddingBottom="@dimen/items_inbetween_space"
-                             android:paddingTop="@dimen/items_inbetween_space">
-
-                             <TextView
-                                 android:id="@+id/tv_agree_privacy_label"
-                                 style="@style/settings_sub_header"
-                                 android:text="Privacy policy" />
-
-                         </LinearLayout>
-
-                     </LinearLayout>
-         -->
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_view_settings_legal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/card_view_settings_alarm_reminder"
-                android:layout_marginLeft="@dimen/card_margin_horizontal"
-                android:layout_marginRight="@dimen/card_margin_horizontal"
-                android:layout_marginTop="@dimen/card_margin_vertical"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:translationZ="6dp"
-                card_view:cardCornerRadius="4dp"
-                card_view:cardElevation="4dp">
-
-                <LinearLayout style="@style/settings_item_layout">
+                    android:layout_marginTop="10dp">
 
                     <TextView
-                        android:id="@+id/tv_agree_header"
-                        style="@style/settings_header"
-                        android:paddingBottom="@dimen/items_inbetween_space"
-                        android:text="Agreement"
-                        android:textStyle="bold" />
+                        android:id="@+id/tv_daily_notification"
+                        style="@style/tvSettingsHeader"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignTop="@+id/timerSwitch"
+                        android:text="App Notifications" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/timerSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="-2dp"
+                        android:checked="false"
+                        android:theme="@style/switch_theme" />
+
+                    <TextView
+                        android:id="@+id/tv_daily_notification_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_daily_notification"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/sett_reminder_desc"
+                        android:textColor="@color/text_color_item_view"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@color/colorBackGreen">
 
                     <LinearLayout
-                        android:id="@+id/ll_terms"
+                        android:id="@+id/layout_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/items_inbetween_space"
-                        android:paddingTop="@dimen/items_inbetween_space">
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="3dp"
+                            app:srcCompat="@drawable/ic_watch_history_red_48dp" />
 
                         <TextView
-                            android:id="@+id/tv_agree_terms_label"
-                            style="@style/settings_sub_header"
-                            android:text="Terms &amp; conditions" />
+                            android:id="@+id/tv_notification_time"
+                            style="@style/tvSettingsHeader"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/sett_reminder_time_content"
+                            android:textColor="@color/gray" />
+
 
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_privacy"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/items_inbetween_space"
-                        android:paddingTop="@dimen/items_inbetween_space">
-
-                        <TextView
-                            android:id="@+id/tv_agree_privacy_label"
-                            style="@style/settings_sub_header"
-                            android:text="Privacy policy" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </LinearLayout><!--
+            </android.support.v7.widget.CardView>-->
 
 
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view_settings_about_us"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/card_view_settings_legal"
-                android:layout_marginLeft="@dimen/card_margin_horizontal"
-                android:layout_marginRight="@dimen/card_margin_horizontal"
-                android:layout_marginTop="@dimen/card_margin_vertical"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:translationZ="6dp"
-                card_view:cardCornerRadius="4dp"
-                card_view:cardElevation="4dp">
+                android:orientation="horizontal">
+
+                <!--    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginLeft="@dimen/card_recycler_corner_radius"
+                        android:layout_marginRight="@dimen/card_recycler_corner_radius"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:translationZ="6dp"
+                        card_view:cardCornerRadius="4dp"
+                        card_view:cardElevation="4dp">-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="true">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout style="@style/settings_item_layout">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/background_dark" />
+
+                    <TextView
+                        android:id="@+id/tv_agree_header"
+                        style="@style/settings_header"
+                        android:layout_marginBottom="10dp"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Legal" />
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:id="@+id/rippleLayoutUnsplashLicence"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.1"
+                        app:mrl_rippleColor="@color/colorBackGreen">
 
                         <TextView
-                            android:id="@+id/tv_card_about_1_1"
-                            style="@style/settings_header"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/about_card1_message"
-                            android:textStyle="bold" />
+                            android:id="@+id/tv_unsplash"
+                            style="@style/tvSettingsHeader"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Unsplash Images" />
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/lightGray" />
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:id="@+id/rippleLayoutGoogleFonts"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.1"
+                        app:mrl_rippleColor="@color/colorBackGreen">
 
                         <TextView
-                            android:id="@+id/tv_about_version"
-                            style="@style/settings_sub_header"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tv_card_about_1_1"
-                            android:layout_marginLeft="@dimen/button_bottom_margin"
-                            android:layout_marginTop="@dimen/text_margin_small"
-                            android:gravity="center_vertical"
-                            android:lineSpacingExtra="@dimen/text_margin_small"
-                            android:text="Android team" />
+                            android:id="@+id/tv_google_fonts"
+                            style="@style/tvSettingsHeader"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Google Fonts" />
 
-                    </LinearLayout>
-                </LinearLayout>
+                    </com.balysv.materialripple.MaterialRippleLayout>
+                </LinearLayout><!--
             </android.support.v7.widget.CardView>
+-->
+            </LinearLayout>
 
 
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view_settings_help"
+            <!--         <android.support.v7.widget.CardView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="5dp"
+
+                         android:layout_marginLeft="@dimen/card_recycler_corner_radius"
+                         android:layout_marginRight="@dimen/card_recycler_corner_radius"
+                         android:clickable="true"
+                         android:foreground="?attr/selectableItemBackground"
+                         android:translationZ="6dp"
+                         card_view:cardCornerRadius="4dp"
+                         card_view:cardElevation="4dp">-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/card_view_settings_about_us"
-                android:layout_marginBottom="@dimen/card_margin_horizontal"
-                android:layout_marginLeft="@dimen/card_margin_horizontal"
-                android:layout_marginRight="@dimen/card_margin_horizontal"
-                android:layout_marginTop="@dimen/card_margin_vertical"
+                android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_help_heading"
+                        style="@style/settings_header"
+                        android:layout_marginBottom="10dp"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/help_message" />
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.1"
+                        app:mrl_rippleColor="@color/colorBackGreen">
+
+                        <LinearLayout
+                            android:id="@+id/layout_help"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="3dp"
+                                app:srcCompat="@drawable/ic_hello_red" />
+
+                            <TextView
+                                android:id="@+id/tv_help"
+                                style="@style/tvSettingsHeader"
+                                android:layout_width="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/help_sub_heading_message" />
+                        </LinearLayout>
+                    </com.balysv.materialripple.MaterialRippleLayout>
+                </LinearLayout>
+            </LinearLayout><!--
+            </android.support.v7.widget.CardView>-->
+
+            <!--<android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+
+                android:layout_marginLeft="@dimen/card_recycler_corner_radius"
+                android:layout_marginRight="@dimen/card_recycler_corner_radius"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackground"
                 android:translationZ="6dp"
                 card_view:cardCornerRadius="4dp"
-                card_view:cardElevation="4dp">
+                card_view:cardElevation="4dp">-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark" />
 
                 <LinearLayout
-                    android:id="@+id/ll_help"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout style="@style/settings_item_layout">
+
+                    <TextView
+                        style="@style/settings_header"
+                        android:layout_marginBottom="10dp"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/about_card1_message" />
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.1"
+                        app:mrl_rippleColor="@color/colorBackGreen">
 
                         <TextView
-                            android:id="@+id/tv_help_heading"
-                            style="@style/settings_header"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/help_message"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tv_help_subheading"
-                            style="@style/settings_sub_header"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tv_card_about_1_1"
-                            android:layout_marginLeft="@dimen/button_bottom_margin"
-                            android:layout_marginTop="@dimen/text_margin_small"
-                            android:gravity="center_vertical"
-                            android:lineSpacingExtra="@dimen/text_margin_small"
-                            android:text="@string/help_sub_heading_message" />
-
-
-
-                        <Button
+                            android:id="@+id/tv_version"
+                            style="@style/tvSettingsHeader"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="30sp"
-                            android:textColor="@color/google_blue"
-                            android:text="hello buddy there"/>
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Version 1.0.0" />
 
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="30sp"
-                            android:textColor="@color/google_blue"
-                            android:text="hello dear there"/>
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="30sp"
-                            android:textColor="@color/google_blue"
-                            android:text="hello you there"/>
-                    </LinearLayout>
+                    </com.balysv.materialripple.MaterialRippleLayout>
                 </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+                <!--
+                            </android.support.v7.widget.CardView>-->
+            </LinearLayout>
         </LinearLayout>
-    </com.github.florent37.parallax.ScrollView>
-</RelativeLayout>
+    </ScrollView>
+</LinearLayout>
